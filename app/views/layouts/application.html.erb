@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <nav class="top-bar fixed" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Project</a></h1>
+        </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+
+        <ul class="right" style="margin: 0px 15px">
+          <li class="active"><a href="#">Notification</a></li>
+          <li class="has-dropdown" style="margin: 5px">
+            <% if signed_in? %>
+            <span class="white">
+              <%= current_user.first_name + ' ' + current_user.last_name %>
+            </span>
+            <img style="border-radius: 10px; width:35px" src="<%= current_user.avatar_url %>">
+            <ul class="dropdown">
+              <li><a href="#">Profile</a></li>
+              <li class="active"><a href="/sign_out">Sign out</a></li>
+            </ul>
+            <% else %>
+            <li><a href="/auth/facebook">Sign in</a></li>
+          <% end %>
+          </li>
+        </ul>
+
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="large-8 small-9 columns">
+                <input type="text" placeholder="Find Stuff">
+              </div>
+              <div class="large-4 small-3 columns">
+                <a href="#" class="alert button expand">Search</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </nav>
+    <div>
+      <dl class="sub-nav">
+        <dt>Filter:</dt>
+        <dd class="active"><a href="#">All</a></dd>
+        <dd><a href="#">Active</a></dd>
+        <dd><a href="#">Pending</a></dd>
+        <dd><a href="#">Suspended</a></dd>
+      </dl>
+      <% if flash.any? %>
+        <div class="alert-box center">
+          <div class="container">
+            <%= flash[:notice] %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row large-12 large-centered column">
+      <%= yield %>
+    </div>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>
