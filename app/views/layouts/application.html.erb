@@ -45,35 +45,43 @@
         <!-- Left Nav Section -->
         <ul class="left">
           <li class="has-form">
-            <div class="row collapse">
-              <div class="large-8 small-9 columns">
-                <input type="text" placeholder="Find Stuff">
-              </div>
-              <div class="large-4 small-3 columns">
-                <a href="#" class="alert button expand">Search</a>
-              </div>
+            <div>
+              <% if flash.any? %>
+                <div class="alert_customized">
+                  <div class="transparent">
+                    <%= flash[:notice] %>
+                  </div>
+                </div>
+              <% end %>
             </div>
           </li>
         </ul>
       </section>
     </nav>
-    <div>
-      <dl class="sub-nav">
-        <dt>Filter:</dt>
-        <dd class="active"><a href="#">All</a></dd>
-        <dd><a href="#">Active</a></dd>
-        <dd><a href="#">Pending</a></dd>
-        <dd><a href="#">Suspended</a></dd>
-      </dl>
-      <% if flash.any? %>
-        <div class="alert-box center">
-          <div class="container">
-            <%= flash[:notice] %>
-          </div>
-        </div>
-      <% end %>
+
+    <div class="icon-bar vertical five-up left">
+      <a class="item">
+        <img src="../assets/img/images/fi-home.svg" >
+        <label>Home</label>
+      </a>
+      <a class="item">
+        <img src="../assets/img/images/fi-bookmark.svg" >
+        <label>Bookmark</label>
+      </a>
+      <a class="item">
+        <img src="../assets/img/images/fi-info.svg" >
+        <label>Info</label>
+      </a>
+      <a class="item">
+        <img src="../assets/img/images/fi-mail.svg" >
+        <label>Mail</label>
+      </a>
+      <a class="item">
+        <img src="../assets/img/images/fi-like.svg" >
+        <label>Like</label>
+      </a>
     </div>
-    <div class="row large-12 large-centered column">
+    <div class="row large-12 column">
       <%= yield %>
     </div>
     <%= javascript_include_tag "application" %>

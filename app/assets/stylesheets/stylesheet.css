@@ -5,3 +5,11 @@
 .center{
   text-align: center;
 }
+
+.alert_customized{
+  font-size: 0.8em;
+  color: white;
+  position: relative;
+  margin-left: 420px;
+  margin-top: 15px;
+}
