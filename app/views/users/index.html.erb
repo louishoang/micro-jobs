@@ -16,9 +16,12 @@
     </div>
   </div>
 </div>
-<div>
-  <% binding.pry %>
-  <% @users.each do |user| %>
-    <div><%= user.user_name %></div>
-  <% end %>
-<div>
+<% binding.pry %>
+<% if @users%>
+  <div>
+    <% @users.each do |user| %>
+      <div><%= user.user_name %></div>
+    <% end %>
+  <div>
+<% end %>
+

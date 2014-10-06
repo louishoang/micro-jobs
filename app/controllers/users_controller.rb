@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_filter :authenticate!
 
   def index
-    @users = User.all
+    if params[:search]
+      @users = User.search(params[:search]).records
+    else
+      @users = User.all
+    end
   end
 
   def show

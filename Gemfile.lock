@@ -42,19 +42,6 @@ GEM
     dotenv-deployment (0.0.2)
     dotenv-rails (0.11.1)
       dotenv (= 0.11.1)
-    elasticsearch (1.0.5)
-      elasticsearch-api (= 1.0.5)
-      elasticsearch-transport (= 1.0.5)
-    elasticsearch-api (1.0.5)
-      multi_json
-    elasticsearch-model (0.1.6)
-      activesupport (> 3)
-      elasticsearch (> 0.4)
-      hashie
-    elasticsearch-rails (0.1.6)
-    elasticsearch-transport (1.0.5)
-      faraday
-      multi_json
     erubis (2.7.0)
     execjs (2.2.1)
     faraday (0.9.0)
@@ -98,6 +85,10 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     pg (0.17.1)
+    pg_search (0.7.8)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -165,14 +156,13 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   dotenv-rails
-  elasticsearch-model
-  elasticsearch-rails
   foundation-rails
   geocoder
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
   pg
+  pg_search
   pry-rails
   rails (= 4.1.6)
   sass-rails (~> 4.0.3)
