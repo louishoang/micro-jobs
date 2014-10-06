@@ -1,0 +1,7 @@
+<%= simple_form_for @job do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, required: true %>
+  <%= f.input :location, required: true %>
+  <%= f.input :budget, required: true %>
+  <%= f.button :submit %>
+<% end %>
