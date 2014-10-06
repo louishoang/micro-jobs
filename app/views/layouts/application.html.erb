@@ -62,11 +62,15 @@
     <div class="icon-bar vertical five-up left">
       <a class="item">
         <img src="../assets/img/images/fi-home.svg" >
-        <label>Home</label>
+        <% if current_user %>
+          <label><%= link_to "Dashboard", user_path(current_user) %></label>
+        <% else %>
+          <label>My Dashboard</label>
+        <% end %>
       </a>
       <a class="item">
         <img src="../assets/img/images/fi-bookmark.svg" >
-        <label>Bookmark</label>
+        <label>Search</label>
       </a>
       <a class="item">
         <img src="../assets/img/images/fi-info.svg" >

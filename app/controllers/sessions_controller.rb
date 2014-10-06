@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
     set_current_user(@user)
     flash[:notice] = "Successfully signed in as #{@user.first_name + ' ' + @user.last_name}."
-    redirect_to '/'
+    redirect_to user_path(current_user)
   end
 
   def destroy
