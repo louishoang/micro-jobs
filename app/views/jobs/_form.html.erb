@@ -3,5 +3,6 @@
   <%= f.input :name, required: true %>
   <%= f.input :location, required: true %>
   <%= f.input :budget, required: true %>
+  <%= f.input :description, as: :text, input_html:{rows: 10, cols: 50}, required: true %>
   <%= f.button :submit %>
 <% end %>

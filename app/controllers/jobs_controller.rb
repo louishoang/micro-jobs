@@ -13,9 +13,9 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-
+    @job.employer_id = current_user.id
     if @job.save
-      redirect_to jobs_path
+      redirect_to job_path(@job)
       flash[:notice] = "Your record has been created successfully!"
     else
       flash[:notice] = "Your record could not be completed"
@@ -24,7 +24,7 @@ class JobsController < ApplicationController
   end
 
   private
-  def manufacturer_params
-    params.require(:job).permit(:name, :location, :budget)
+  def job_params
+    params.require(:job).permit(:name, :location, :budget, :description)
   end
 end
