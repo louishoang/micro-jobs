@@ -1,21 +1,24 @@
-<div>
-  <!-- left colum start here -->
+<br>
+<div class="row">
   <div class="large-12 columns">
-    <dl class="tabs" data-tab>
-      <dd class="active"><a href="#panel1">Primary</a></dd>
-      <dd><a href="#panel2">Remind Me</a></dd>
-      <dd><a href="#panel3">My Profile</a></dd>
-    </dl>
-    <div class="tabs-content">
-      <div class="content active" id="panel1">
-        <p>This is the first panel of the basic tab example. This is the first panel of the basic   tab example.</p>
-      </div>
-      <div class="content" id="panel2">
-        <p>This is the second panel of the basic tab example. This is the second panel of the   basic tab example.</p>
-      </div>
-      <div class="content" id="panel3">
-        <p>This is the third panel of the basic tab example. This is the third panel of the basic   tab example.</p>
+    <div class="row collapse">
+      <div class="small-10 columns">
+        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+
+            <div class="small-11 columns">
+              <%= text_field_tag :search, params[:search], placeholder: "Search", name: 'search' %>
+            </div>
+            <div class="small-1 columns">
+              <%= submit_tag "Search", :title => nil %>
+            </div>
+        <% end %>
       </div>
     </div>
-  </div >
+  </div>
 </div>
+<div>
+  <% binding.pry %>
+  <% @users.each do |user| %>
+    <div><%= user.user_name %></div>
+  <% end %>
+<div>

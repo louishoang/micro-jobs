@@ -1,4 +1,8 @@
-<% @jobs.each do |job| %>
-  <%= job.name %><%= job.location %><%= job.budget %>
-<% end %>
+<div>
+  <% @jobs.each do |job| %>
+    <div>
+      <%= job.name %><%= job.location %><%= job.budget %>
+    </div>
+  <% end %>
+</div>
 

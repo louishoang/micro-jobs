@@ -1,5 +1,9 @@
+require 'elasticsearch/model'
+
 class Job < ActiveRecord::Base
   extend ::Geocoder::Model::ActiveRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   belongs_to :user
 
