@@ -32,6 +32,7 @@ gem 'simple_form'
 gem 'geocoder'
 gem 'pg_search'
 gem 'mapbox-rails'
+gem 'quiet_assets'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,10 +1,14 @@
 class JobsController < ApplicationController
+  before_action :authenticate!, only: [:edit, :update]
+  before_action :find_job, only: [:show, :edit, :update]
+  before_action :authorize_user!, only: [:edit, :update]
+
   def index
     @jobs = Job.all
   end
 
   def show
-    @job = Job.find(params[:id])
+
   end
 
   def new
@@ -26,5 +30,16 @@ class JobsController < ApplicationController
   private
   def job_params
     params.require(:job).permit(:name, :location, :budget, :description)
+  end
+
+  def find_job
+    @job = Job.find(params[:id])
+  end
+
+  def authorize_user!
+    unless @user == current_user
+      redirect_to root_url,
+        notice: "You need to sign in!"
+    end
   end
 end
