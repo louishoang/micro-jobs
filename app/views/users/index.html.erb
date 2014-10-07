@@ -1,28 +1,2 @@
-<br>
-<div class="row">
-  <div class="large-12 columns">
-    <div class="row collapse">
-      <div class="small-10 columns">
-        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-
-            <div class="small-11 columns">
-              <%= text_field_tag :search, params[:search], placeholder: "Search", name: 'search' %>
-            </div>
-            <div class="small-1 columns">
-              <%= submit_tag "Search", :title => nil, class: "tiny round button" %>
-            </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-<% if @pg_search_documents %>
-  <div>
-    <% @pg_search_documents.each do |pg_search_document| %>
-      <div>
-        <%= pg_search_document.searchable.user_name %>
-      </div>
-    <% end %>
-  <div>
-<% end %>
+<div id='map' class='dark small-12 column'></div>
 
