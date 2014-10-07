@@ -4,10 +4,34 @@ class UsersController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update]
 
   def index
+    @geojson = []
     if params[:search]
       @pg_search_documents = PgSearch.multisearch(params[:search])
     else
       @users = User.all
+      @users.each do |user|
+        @geojson << {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [user.longitude, user.latitude]
+          },
+          properties: {
+            address: user.address,
+            email: user.user_name,
+            image: user.avatar_url,
+            id: user.id,
+            :'marker-size' => 'medium',
+            :'marker-symbol' => 'rocket',
+            :'marker-color' => '#fa0'
+          }
+        }
+      end
+    end
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @geojson}
     end
   end
 
