@@ -1,0 +1,7 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :first_name, required: true %>
+  <%= f.input :last_name, required: true %>
+  <%= f.input :address, required: true %>
+  <%= f.button :submit %>
+<% end %>

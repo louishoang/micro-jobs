@@ -15,7 +15,7 @@
     <nav class="top-bar fixed" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="#">Project</a></h1>
+          <h1><a href="#">Micro Job</a></h1>
         </li>
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -58,30 +58,28 @@
         </ul>
       </section>
     </nav>
-
-    <div class="icon-bar vertical five-up left">
-      <a class="item">
-        <img src="../assets/img/images/fi-home.svg" >
-        <label>Home</label>
-      </a>
-      <a class="item">
-        <img src="../assets/img/images/fi-bookmark.svg" >
-        <label>Bookmark</label>
-      </a>
-      <a class="item">
-        <img src="../assets/img/images/fi-info.svg" >
-        <label>Info</label>
-      </a>
-      <a class="item">
-        <img src="../assets/img/images/fi-mail.svg" >
-        <label>Mail</label>
-      </a>
-      <a class="item">
-        <img src="../assets/img/images/fi-like.svg" >
-        <label>Like</label>
-      </a>
-    </div>
-    <div class="row large-12 column">
+    <ul class="breadcrumbs">
+      <li>
+        <%= link_to "Home", root_path %>
+      </li>
+      <% if current_user %>
+        <li>
+          <%= link_to "My Dashboard", user_path(current_user) %>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to "Browse Jobs", jobs_path %>
+      </li>
+      <li>
+        <%= link_to "Browse Users", users_path %>
+      </li>
+      <% if current_user %>
+        <li>
+          <%= link_to "Post New Job", new_job_path %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="row" style="margin-top: 10px;">
       <%= yield %>
     </div>
     <%= javascript_include_tag "application" %>

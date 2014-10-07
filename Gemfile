@@ -29,6 +29,9 @@ gem 'foundation-rails'
 gem 'omniauth-facebook'
 gem 'pry-rails'
 gem 'dotenv-rails'
+gem 'simple_form'
+gem 'geocoder'
+gem 'pg_search'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
