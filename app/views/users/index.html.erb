@@ -9,18 +9,19 @@
               <%= text_field_tag :search, params[:search], placeholder: "Search", name: 'search' %>
             </div>
             <div class="small-1 columns">
-              <%= submit_tag "Search", :title => nil %>
+              <%= submit_tag "Search", :title => nil, class: "tiny round button" %>
             </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-<% binding.pry %>
-<% if @users%>
+<% if @pg_search_documents %>
   <div>
-    <% @users.each do |user| %>
-      <div><%= user.user_name %></div>
+    <% @pg_search_documents.each do |pg_search_document| %>
+      <div>
+        <%= pg_search_document.searchable.user_name %>
+      </div>
     <% end %>
   <div>
 <% end %>

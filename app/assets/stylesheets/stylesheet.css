@@ -13,3 +13,44 @@
   margin-left: 420px;
   margin-top: 15px;
 }
+
+.welcome{
+  background-image: url("http://www.idesignresources.com/wp-content/uploads/2013/01/Freelance-Switch-Work-Time-Wallpaper-1920X1080.jpg");
+}
+
+/*job page*/
+.job{
+  display: inline-block;
+  border-radius: 15px;
+  background-color: #F5F5F6;
+}
+
+.job_image{
+  margin: 0 auto;
+}
+
+.job_name{
+  font-size: 1em;
+  font-weight: bold;
+  color: #0093D0;
+}
+
+.job_location{
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.job_budget_box{
+  font-family: "Times New Roman", Times, serif;
+  background-color: #8AC007;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+/*profile_page*/
+.profile_photo{
+  width: 100%;
+  height: 100%
+}

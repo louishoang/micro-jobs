@@ -1,7 +1,22 @@
-<div>
+<div class="jobs_list">
   <% @jobs.each do |job| %>
-    <div>
-      <%= job.name %><%= job.location %><%= job.budget %>
+    <div class="job large-10 small-12 columns">
+      <div class="job_image large-2 small-4 columns">
+        <img src="http://www.saddlebackleather.com/c.1265306/shopflow/img/no_image_available.jpeg"/>
+      </div>
+      <div class="large-8 small-8 columns">
+        <div class="job_name">
+          <%= job.name %>
+        </div>
+        <div class="job_location">
+          Location: <%= job.location %>
+        </div>
+        <div>
+        </div>
+      </div>
+      <div class="large-2 small-12 columns job_budget_box">
+        $<%= job.budget %>
+      </div>
     </div>
   <% end %>
 </div>

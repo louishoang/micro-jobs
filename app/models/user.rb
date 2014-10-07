@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:user_name, :first_name, :last_name, :address]
+
   extend ::Geocoder::Model::ActiveRecord
 
   def self.find_or_create_from_auth_hash(auth_hash)
@@ -8,11 +11,13 @@ class User < ActiveRecord::Base
       user.last_name = auth_hash[:info][:last_name]
     end
   end
+  has_many :jobs
 
   validates :user_name, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
 
   geocoded_by :address
+
   after_validation :geocode, if: :address_changed?
 end

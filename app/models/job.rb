@@ -1,4 +1,5 @@
 class Job < ActiveRecord::Base
+  include PgSearch
   extend ::Geocoder::Model::ActiveRecord
 
   belongs_to :user
