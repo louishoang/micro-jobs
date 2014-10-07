@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @geojson = []
+    @users = User.all
     if params[:search]
       @pg_search_documents = PgSearch.multisearch(params[:search])
     else
