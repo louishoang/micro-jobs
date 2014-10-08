@@ -2,3 +2,10 @@
 <div>Location: <%= @job.location %></div>
 <div>Budget: <%= @job.budget %></div>
 <div>Description: <%= @job.description %></div>
+<div>
+  <% if @job.user == current_user %>
+    <%= link_to "Edit Job Posting", edit_job_path(@job), class: "button round tiny" %>
+    <%= link_to "Delete Job Posting", job_path(@job), class: "button round tiny",
+    method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>
