@@ -5,12 +5,16 @@ class UsersController < ApplicationController
 
   def index
     @geojson = []
-    @users = User.all # just for temporary usage
+    # User.where("user_name ILIKE :search OR CONCAT(first_name, ' ', last_name) ILIKE :search", search: search)
+     # just for temporary usage
     if params[:search]
-      @pg_search_documents = PgSearch.multisearch(params[:search])
+      search = params[:search]
+      @users = User.where("user_name ILIKE :search OR CONCAT(first_name, ' ', last_name) ILIKE :search", search: search)
     else
       @users = User.all
       @users.each do |user|
+        next unless user.longitude && user.latitude
+
         @geojson << {
           type: 'Feature',
           geometry: {
