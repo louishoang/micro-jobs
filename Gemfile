@@ -36,6 +36,11 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'dotenv-rails'
   gem 'rspec-rails'
+  gem "launchy"
+  gem 'shoulda'
+  gem 'shoulda-matchers'
+  gem "factory_girl_rails"
+  gem "capybara"
 end
 
 # Use ActiveModel has_secure_password

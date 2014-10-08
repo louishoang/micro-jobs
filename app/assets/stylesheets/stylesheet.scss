@@ -70,11 +70,9 @@
   border-style: dotted;
   border-width: 1px;
   border-color: #73B6E6;
+  position: absolute;
+  height: 80%;
 
-  // @media #{$large-up} {
-    position: absolute;
-    height: 80%;
-  // }
 }
 
 .white_box{

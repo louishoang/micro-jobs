@@ -71,7 +71,6 @@ class UsersController < ApplicationController
   end
 
   def authorize_user!
-    binding.pry
     unless @user == current_user
       redirect_to root_url,
         notice: "You need to sign in!"

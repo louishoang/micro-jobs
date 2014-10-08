@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
       user.last_name = auth_hash[:info][:last_name]
     end
   end
-  has_many :jobs
+  has_many :jobs, foreign_key: 'employer_id'
 
   validates :user_name, presence: true
   validates :first_name, presence: true
