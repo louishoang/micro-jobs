@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate!, only: [:edit, :update]
+  before_action :authenticate!, only: [:new, :edit, :update]
   before_action :find_job, only: [:show, :edit, :update]
   before_action :authorize_user!, only: [:edit, :update]
 

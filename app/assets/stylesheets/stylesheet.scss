@@ -60,6 +60,9 @@
   bottom: 0;
   width: 100%;
   height: 100%;
+  @media #{$small-only} {
+    height: 50%;
+  }
 }
 
 .search_tool {
