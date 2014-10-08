@@ -1,23 +1,32 @@
-<div class="jobs_list">
-  <% @jobs.each do |job| %>
-    <div class="job large-10 small-12 columns">
-      <div class="job_image large-2 small-4 columns">
-        <img src="http://www.saddlebackleather.com/c.1265306/shopflow/img/no_image_available.jpeg"/>
-      </div>
-      <div class="large-8 small-8 columns">
-        <div class="job_name">
-          <%= job.name %>
-        </div>
-        <div class="job_location">
-          Location: <%= job.location %>
-        </div>
-        <div>
-        </div>
-      </div>
-      <div class="large-2 small-12 columns job_budget_box">
-        $<%= job.budget %>
-      </div>
-    </div>
-  <% end %>
-</div>
+<div id='map' class='dark large-12 small-12 columns'></div>
 
+<div class="search_tool large-4 small-12 columns">
+  <div>
+    <%= form_tag jobs_path, :method => 'get' do %>
+      <div>
+        <%= text_field_tag :search, params[:search], class: "small-12 columns", placeholder: 'search' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="panel large-12 small-12 columns">
+    <% if @jobs %>
+      <% @jobs.each do |job| %>
+        <div class="panel large-12 columns white_box">
+          <div class="large-8 columns">
+            <%= link_to job.name, job_path(job) %>
+            <div class="address">
+              <% if job.location %>
+                <%= job.location %>
+              <% else %>
+                Address not disclosed
+              <% end %>
+            </div>
+          </div>
+          <div class="large-4 small-12 columns">
+            damn avatar
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

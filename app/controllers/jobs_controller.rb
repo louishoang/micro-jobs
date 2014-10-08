@@ -4,7 +4,38 @@ class JobsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update]
 
   def index
-    @jobs = Job.all
+    @geojson = []
+    if params[:search]
+      search = params[:search]
+      @jobss = Job.where("name ILIKE :search", search: search)
+    else
+      @jobs = Job.all
+      @jobs.each do |job|
+        next unless job.longitude && job.latitude
+
+        @geojson << {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [job.longitude, job.latitude]
+          },
+          properties: {
+            role: "Job",
+            name: job.name,
+            id: job.id,
+            :'marker-size' => 'medium',
+            :'marker-symbol' => 'rocket',
+            :'marker-color' => '#fa0'
+          }
+        }
+
+      end
+    end
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @geojson}
+    end
   end
 
   def show
