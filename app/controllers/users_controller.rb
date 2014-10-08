@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @geojson = []
-    @users = User.all
+    @users = User.all # just for temporary usage
     if params[:search]
       @pg_search_documents = PgSearch.multisearch(params[:search])
     else
@@ -18,6 +18,8 @@ class UsersController < ApplicationController
             coordinates: [user.longitude, user.latitude]
           },
           properties: {
+            role: "User",
+            name: user.first_name + ' ' + user.last_name,
             address: user.address,
             email: user.user_name,
             image: user.avatar_url,

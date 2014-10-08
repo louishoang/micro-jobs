@@ -1,4 +1,5 @@
 <div id='map' class='dark large-12 small-12 columns'></div>
+
 <div class="search_tool large-4 small-12 columns">
   <div>
     <%= form_tag users_path, :method => 'get' do %>
@@ -10,7 +11,7 @@
   <div class="panel large-12 columns">
     <% if @users %>
       <% @users.each do |user| %>
-        <div class="large-3 columns">
+        <div class="large-3 columns" data="<%= user.user_name %> ">
           <%= image_tag user.avatar_url, class: "user_avatar" %>
         </div>
         <div class="large-9 columns">

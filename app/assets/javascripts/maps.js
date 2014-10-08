@@ -19,4 +19,25 @@ $("#map").ready(function() {
   //       'marker-color': '#fa0'
   //   })
   // }).addTo(map);
+
+  featureLayer.eachLayer(function(data) {
+    var marker;
+    var properties;
+    var popupContent;
+
+    marker = data;
+    properties = marker.feature.properties;
+      if (properties.role === "User") {
+        popupContent = '<div class="popup">' + '<p>' + properties.name + '</p>' + '</div>';
+      }
+
+    marker.bindPopup(popupContent, {
+      closeButton: false,
+      minWidth: 100,
+      maxWidth: 200,
+      maxHeight: 200,
+    });
+  })
+
+
 });
