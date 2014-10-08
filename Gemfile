@@ -26,13 +26,17 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'foundation-rails'
 gem 'omniauth-facebook'
-gem 'pry-rails'
-gem 'dotenv-rails'
 gem 'simple_form'
 gem 'geocoder'
 gem 'pg_search'
 gem 'mapbox-rails'
-gem 'quiet_assets'
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'quiet_assets'
+  gem 'dotenv-rails'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

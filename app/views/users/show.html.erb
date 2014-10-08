@@ -3,8 +3,10 @@
   <div class="large-12 small-12 columns">
     <dl class="tabs" data-tab>
       <dd class="active"><a href="#panel1">Primary</a></dd>
-      <dd><a href="#panel2">Remind Me</a></dd>
-      <dd><a href="#panel3">My Profile</a></dd>
+      <% if owner?(@user) %>
+        <dd><a href="#panel2">Remind Me</a></dd>
+        <dd><a href="#panel3">My Profile</a></dd>
+      <% end %>
     </dl>
     <div class="tabs-content small-12 columns">
       <div class="content active" id="panel1">
@@ -23,12 +25,14 @@
           </p>
         </div>
       </div>
-      <div class="content" id="panel2">
-        <p>This is the second panel of the basic tab example. This is the second panel of the   basic tab example.</p>
-      </div>
-      <div class="content" id="panel3">
-        <p><%= render "users/edit", user: @user %></p>
-      </div>
+      <% if owner?(@user) %>
+        <div class="content" id="panel2">
+          <p>This is the second panel of the basic tab example. This is the second panel of the   basic tab example.</p>
+        </div>
+        <div class="content" id="panel3">
+            <p><%= render "users/edit", user: @user %></p>
+        </div>
+      <% end %>
     </div>
   </div >
 </div>

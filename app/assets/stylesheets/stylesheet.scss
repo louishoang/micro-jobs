@@ -62,26 +62,25 @@
   height: 100%;
 }
 
-.search_tool{
+.search_tool {
   padding-top: 10px;
   z-index: 99;
   background-color: #F6F6F6;
   font-size: 1em;
-  position: absolute;
-  height: 80%;
   border-style: dotted;
   border-width: 1px;
   border-color: #73B6E6;
+
+  // @media #{$large-up} {
+    position: absolute;
+    height: 80%;
+  // }
 }
 
-.users_lists{
+.white_box{
   background-color: white;
 }
 
-.user_avatar{
-  width: 80px;
-}
-
-.info_box{
-  border-color: #73B6E6;
+.address{
+  font-size: 0.7em;
 }

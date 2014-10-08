@@ -19,12 +19,8 @@ class ApplicationController < ActionController::Base
     @current_user = user
   end
 
-  def same_user?(user)
-    user.user_id == current_user.id
-  end
-
-  def owner?
-    @question.user_id == current_user.id
+  def owner?(user)
+    user == current_user
   end
 
   def authenticate!
