@@ -2,9 +2,9 @@ class Job < ActiveRecord::Base
   include PgSearch
   extend ::Geocoder::Model::ActiveRecord
 
-  belongs_to :user
+  belongs_to :user, foreign_key: 'employer_id'
 
-  validates :employer_id, presence: true
+  validates :user, presence: true
   validates :name, presence: true
   validates :location, presence: true
   validates :budget, numericality: { greater_than_or_equal_to: 20 }

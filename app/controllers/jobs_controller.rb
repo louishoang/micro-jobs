@@ -7,7 +7,7 @@ class JobsController < ApplicationController
     @geojson = []
     if params[:search]
       search = params[:search]
-      @jobss = Job.where("name ILIKE :search", search: search)
+      @jobs = Job.where("name ILIKE :search", search: search)
     else
       @jobs = Job.all
       @jobs.each do |job|
@@ -24,7 +24,7 @@ class JobsController < ApplicationController
             name: job.name,
             id: job.id,
             :'marker-size' => 'medium',
-            :'marker-symbol' => 'rocket',
+            :'marker-symbol' => 'marker-stroked',
             :'marker-color' => '#fa0'
           }
         }
