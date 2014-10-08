@@ -17,7 +17,3 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
-
-$(document).ready(function() {
-  var map = L.mapbox.map('map', 'louishoang.jn2haba8').setView([37.9, -77], 5);
-});
