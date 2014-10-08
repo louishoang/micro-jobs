@@ -18,8 +18,7 @@ describe Job do
 
   describe 'associations' do
     it do
-      should belong_to(:user).
-      with_foreign_key('employer_id')
+      should belong_to(:user).with_foreign_key('employer_id')
       ## should belong to user where job.employer_id = user.id
     end
   end
