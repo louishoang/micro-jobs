@@ -72,7 +72,9 @@
   border-color: #73B6E6;
   position: absolute;
   height: 80%;
-
+  @media #{$small-only} {
+    position :relative;
+  }
 }
 
 .white_box{
