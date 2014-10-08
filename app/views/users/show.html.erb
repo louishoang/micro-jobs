@@ -9,17 +9,17 @@
     <div class="tabs-content small-12 columns">
       <div class="content active" id="panel1">
         <div class="panel large-3 small-4 columns">
-          <%= image_tag current_user.avatar_url, class: "profile_photo" %>
+          <%= image_tag @avatar, alt:"profile-photos", class: "profile_photo" %>
         </div>
         <div class="panel large-8 small-7 columns left" style="margin-left: 10px">
           <p>
-            <%= current_user.first_name %>&nbsp;<%= current_user.last_name %>
+            <%= @first_name %>&nbsp;<%= @last_name %>
           </p>
           <p>
-            Email: <%= current_user.user_name %>
+            Email: <%= @user_name %>
           </p>
           <p>
-            Address: <%= current_user.address %>
+            Address: <%= @address %>
           </p>
         </div>
       </div>
@@ -27,7 +27,7 @@
         <p>This is the second panel of the basic tab example. This is the second panel of the   basic tab example.</p>
       </div>
       <div class="content" id="panel3">
-        <p><%= render "users/edit", user: current_user %></p>
+        <p><%= render "users/edit", user: @user %></p>
       </div>
     </div>
   </div >

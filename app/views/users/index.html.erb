@@ -11,7 +11,7 @@
   <div class="panel large-12 columns">
     <% if @users %>
       <% @users.each do |user| %>
-        <div class="large-3 columns" data="<%= user.user_name %> ">
+        <div class="large-3 columns">
           <%= image_tag user.avatar_url, class: "user_avatar" %>
         </div>
         <div class="large-9 columns">

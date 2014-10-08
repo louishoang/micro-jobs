@@ -39,6 +39,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @avatar = @user.avatar_url
+    @user_name = @user.user_name
+    @first_name = @user.first_name
+    @last_name = @user.last_name
+    @address = @user.address
+
   end
 
   def edit
