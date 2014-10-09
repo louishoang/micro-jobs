@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006204456) do
+ActiveRecord::Schema.define(version: 20141009151138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "job_skill_associations", force: true do |t|
+    t.integer  "job_id"
+    t.integer  "skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "job_skill_associations", ["job_id", "skill_id"], name: "index_job_skill_associations_on_job_id_and_skill_id", unique: true, using: :btree
 
   create_table "jobs", force: true do |t|
     t.string   "name",                        null: false
@@ -37,6 +46,22 @@ ActiveRecord::Schema.define(version: 20141006204456) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "skills", force: true do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_skill_associations", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "skill_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_skill_associations", ["user_id", "skill_id"], name: "index_user_skill_associations_on_user_id_and_skill_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider",   null: false

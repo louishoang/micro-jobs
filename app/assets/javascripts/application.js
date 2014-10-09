@@ -15,6 +15,4 @@
 //= require foundation
 //= require mapbox.js
 //= require_tree .
-$( document ).ready(function() {
-  $(function(){ $(document).foundation(); });
-});
+$(function(){ $(document).foundation(); });
