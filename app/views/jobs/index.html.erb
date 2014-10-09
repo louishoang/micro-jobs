@@ -1,6 +1,6 @@
 <div id='map' class='dark large-12 small-12 columns'></div>
 
-<div class="search_tool large-4 small-12 columns">
+<div class="search_tool large-4 small-12 columns" style="overflow-y: scroll;">
   <div>
     <%= form_tag jobs_path, :method => 'get' do %>
       <div>
@@ -12,7 +12,7 @@
     <% if @jobs %>
       <% @jobs.each do |job| %>
         <div class="panel large-12 columns white_box">
-          <div class="large-8 columns">
+          <div class="large-8 columns ">
             <%= link_to job.name, job_path(job) %>
             <div class="address">
               <% if job.location %>

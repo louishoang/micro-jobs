@@ -1,8 +1,10 @@
 var map = L.mapbox.map('map', 'louishoang.jn2haba8', {
   //this is where to put options for map such as auto zoom
+  zoomControl: false
 }).setView([42.366, -71.109], 13);
 
 // Disable drag and zoom handlers.
+new L.Control.Zoom({ position: 'topright' }).addTo(map);
 map.touchZoom.disable();
 map.doubleClickZoom.disable();
 map.scrollWheelZoom.disable();
