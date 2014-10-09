@@ -1,4 +1,19 @@
-<div><h2><%= @job.name %></h2></div>
-<div>Location: <%= @job.location %></div>
-<div>Budget: <%= @job.budget %></div>
-<div>Description: <%= @job.description %></div>
+<div class="row job_page">
+  <div><%= image_tag @avatar, class: "photos_on_job" %></div>
+  <hr>
+  <div><h2><%= @job.name %></h2></div>
+  <div>Location: <%= @job.location %></div>
+  <div>Budget: $<%= @job.budget %></div>
+  <hr>
+  <div>
+    <span>Job Description: </span><br>
+    <%= @job.description %>
+  </div>
+  <div>
+    <% if @job.user == current_user %>
+      <%= link_to "Edit Job Posting", edit_job_path(@job), class: "button round tiny" %>
+      <%= link_to "Delete Job Posting", job_path(@job), class: "button round tiny",
+      method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate!, only: [:new, :edit, :update]
-  before_action :find_job, only: [:show, :edit, :update]
+  before_action :find_job, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update]
 
   def index
@@ -39,7 +39,18 @@ class JobsController < ApplicationController
   end
 
   def show
+    @user = @job.user
+    @avatar = @user.avatar_url
+  end
 
+  def edit
+  end
+
+  def update
+    if @job.update(job_params)
+      flash[:notice]= "Job is updated successfully"
+      redirect_to job_path(@job)
+    end
   end
 
   def new
@@ -56,6 +67,13 @@ class JobsController < ApplicationController
       flash[:notice] = "Your record could not be completed"
       render "new"
     end
+  end
+
+  def destroy
+    if @job.destroy
+      flash[:notice] = "Your record has been deleted successfully!"
+    end
+    redirect_to @job
   end
 
   private
