@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :jobs
   resources :users
+  resources :skills
   resource :session, only: [:new, :create, :destroy]
 
   get "/auth/:provider/callback", to: "sessions#create"

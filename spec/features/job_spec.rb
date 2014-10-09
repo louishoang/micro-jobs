@@ -15,7 +15,7 @@ feature "Login user can post and see jobs" do
     fill_in "Location", with: job.location
     fill_in "Budget", with: job.budget
     fill_in "Description", with: job.description
-
+    save_and_open_page
     click_on "Create Job"
 
     expect(page).to have_content("Your record has been created successfully!")
