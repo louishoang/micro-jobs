@@ -38,8 +38,9 @@ class JobsController < ApplicationController
   end
 
   def show
-    @user = @job.user
+    @user = @job.employer
     @avatar = @user.avatar_url
+    @skills = @job.skills
   end
 
   def edit
@@ -54,12 +55,20 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    @job_skill_association = JobSkillAssociation.new
   end
 
   def create
     @job = Job.new(job_params)
+
     @job.employer_id = current_user.id
+    params[:job][:skill_ids].shift
+    @skills_list = params[:job][:skill_ids]
+
     if @job.save
+      @skills_list.each do |skill_id|
+        JobSkillAssociation.create(job_id: @job.id, skill_id: skill_id )
+      end
       redirect_to job_path(@job)
       flash[:notice] = "Your record has been created successfully!"
     else
@@ -77,7 +86,7 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:name, :location, :budget, :description)
+    params.require(:job).permit(:name, :location, :budget, :description, :skills_ids => [])
   end
 
   def find_job

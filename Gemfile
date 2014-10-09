@@ -30,6 +30,7 @@ gem 'simple_form'
 gem 'geocoder'
 gem 'pg_search'
 gem 'mapbox-rails'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'pry-rails'

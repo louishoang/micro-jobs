@@ -5,6 +5,14 @@
   <div><h2><%= @job.name %></h2></div>
   <div>Location: <%= @job.location %></div>
   <div>Budget: $<%= @job.budget %></div>
+  <div>
+    <span>Skills:</span>
+    <span>
+      <% @skills.each do |skill| %>
+        <span class="success label round"><%= skill.name %></span>&nbsp;
+      <% end %>
+    </span>
+  </div>
   <hr>
   <div>
     <span>Job Description: </span><br>
@@ -12,7 +20,7 @@
   </div>
   <hr>
   <div>
-    <% if @job.user == current_user %>
+    <% if @job.employer == current_user %>
       <%= link_to "Edit Job Posting", edit_job_path(@job), class: "button round tiny" %>
       <%= link_to "Delete Job Posting", job_path(@job), class: "button round tiny",
       method: :delete, data: { confirm: 'Are you sure?' } %>

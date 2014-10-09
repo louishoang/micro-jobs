@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, aliases: [:employer] do
     provider "facebook"
     uid "1234"
     user_name "test@gmail.com"

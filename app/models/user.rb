@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :jobs, foreign_key: 'employer_id', dependent: :destroy
+  has_many :user_skill_associations
+  has_many :skills, through: :user_skill_associations
 
   validates :user_name, presence: true
   validates :first_name, presence: true

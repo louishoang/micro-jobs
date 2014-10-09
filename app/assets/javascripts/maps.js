@@ -10,32 +10,32 @@ map.scrollWheelZoom.disable();
 
 // Disable tap handler, if present.
 if (map.tap) map.tap.disable();
-// $("#map").ready(function() {
+// $(document).ready(function() {
+  $.ajax({
+    url: '/users.json',
+    dataType: 'json',
+    success: function(users) {
 
-var data = $.ajax({
-  url: '/users.json',
-  dataType: 'json',
-  success: function(users) {
+      var firstLongitude = users[0].geometry.coordinates[0];
+      var firstLatitude = users[0].geometry.coordinates[1];
 
-    var firstLongitude = users[0].geometry.coordinates[0];
-    var firstLatitude = users[0].geometry.coordinates[1];
+      // Add markers to map
+      map.markerLayer.setGeoJSON(users);
 
-    // Add markers to map
-    map.markerLayer.setGeoJSON(users);
+      // Iterate over each marker on the map
+      map.markerLayer.eachLayer(function(marker) {
+        var properties = marker.feature.properties;
+        // Create the popup content HTML
+        var popupContent = "<a href='/users/" + properties.id + "'>" + properties.name + "</a>";
 
-    // Iterate over each marker on the map
-    map.markerLayer.eachLayer(function(marker) {
-      var properties = marker.feature.properties;
-      // Create the popup content HTML
-      var popupContent = "<a href='/users/" + properties.id + "'>" + properties.name + "</a>";
-
-      // Bind the popup to the marker
-      marker.bindPopup(popupContent, {
-        closeButton: true,
-        minWidth: 200
+        // Bind the popup to the marker
+        marker.bindPopup(popupContent, {
+          closeButton: true,
+          minWidth: 200
+        });
       });
-    });
-    map.setView([firstLatitude, firstLongitude], 13);
-  }
-});
+      map.setView([firstLatitude, firstLongitude], 13);
+    }
+  });
 // });
+
