@@ -39,6 +39,8 @@ class JobsController < ApplicationController
   end
 
   def show
+    @user = @job.user
+    @avatar = @user.avatar_url
   end
 
   def edit
@@ -71,7 +73,6 @@ class JobsController < ApplicationController
     if @job.destroy
       flash[:notice] = "Your record has been deleted successfully!"
     end
-
     redirect_to @job
   end
 

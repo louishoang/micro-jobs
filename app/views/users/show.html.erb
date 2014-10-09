@@ -1,7 +1,7 @@
-<div>
+<div class="row job_page">
   <!-- left colum start here -->
-  <div class="large-12 small-12 columns">
-    <dl class="tabs" data-tab>
+  <div class="large-12 small-12 columns" style="margin-top: 1%">
+    <dl class="tabs large-12 columns" data-tab>
       <dd class="active"><a href="#panel1">Primary</a></dd>
       <% if owner?(@user) %>
         <dd><a href="#panel2">Remind Me</a></dd>
@@ -10,8 +10,8 @@
     </dl>
     <div class="tabs-content small-12 columns">
       <div class="content active" id="panel1">
-        <div class="panel large-3 small-4 columns">
-          <%= image_tag @avatar, alt:"profile-photos", class: "profile_photo" %>
+        <div class="large-3 small-4 columns">
+          <%= image_tag @avatar, alt:"profile-photos", class: "photos_on_job" %>
         </div>
         <div class="panel large-8 small-7 columns left" style="margin-left: 10px">
           <p>

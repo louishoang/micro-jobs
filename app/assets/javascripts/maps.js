@@ -11,6 +11,7 @@ map.scrollWheelZoom.disable();
 if (map.tap) map.tap.disable();
 
 $("#map").ready(function() {
+
   var data = $.ajax({
     url: '/users.json',
     dataType: 'json',
