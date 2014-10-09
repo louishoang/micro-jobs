@@ -8,25 +8,25 @@
       </div>
     <% end %>
   </div>
-  <div class="panel large-12 small-12 columns">
-    <% if @jobs %>
-      <% @jobs.each do |job| %>
-        <div class="panel large-12 columns white_box">
-          <div class="large-8 columns ">
-            <%= link_to job.name, job_path(job) %>
-            <div class="address">
-              <% if job.location %>
-                <%= job.location %>
-              <% else %>
-                Address not disclosed
-              <% end %>
-            </div>
-          </div>
-          <div class="large-4 small-12 columns">
-            damn avatar
+  <% if @jobs %>
+    <% @jobs.each do |job| %>
+      <div class="panel large-12 columns white_box">
+        <div class="large-8 small-12 columns ">
+          <%= link_to job.name, job_path(job) %>
+          <div class="address">
+            <% if job.location %>
+              <%= job.location %>
+            <% else %>
+              Address not disclosed
+            <% end %>
           </div>
         </div>
-      <% end %>
+        <div class="large-4 small-12 columns">
+          <% if job.user %>
+            <%= image_tag job.user.avatar_url, class: "user_avatar" %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>

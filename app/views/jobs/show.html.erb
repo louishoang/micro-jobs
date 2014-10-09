@@ -1,4 +1,5 @@
 <div class="row job_page">
+  <span class="go_back"><%= link_to '< Go Back', :back %></span>
   <div class="container"><%= image_tag @avatar, class: "photos_on_job" %></div>
   <hr>
   <div><h2><%= @job.name %></h2></div>
@@ -9,6 +10,7 @@
     <span>Job Description: </span><br>
     <%= @job.description %>
   </div>
+  <hr>
   <div>
     <% if @job.user == current_user %>
       <%= link_to "Edit Job Posting", edit_job_path(@job), class: "button round tiny" %>

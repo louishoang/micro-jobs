@@ -31,9 +31,9 @@
             <span class="white">
               <%= current_user.first_name + ' ' + current_user.last_name %>
             </span>
-            <img style="border-radius: 10px; width:35px" src="<%= current_user.avatar_url %>">
+            <img style="border-radius: 20px; width: 35px; height: 35px" src="<%= current_user.avatar_url %>">
             <ul class="dropdown">
-              <li><a href="#">Profile</a></li>
+              <li><%= link_to "Profile", user_path(current_user) %></li>
               <li class="active"><a href="/sign_out">Sign out</a></li>
             </ul>
             <% else %>

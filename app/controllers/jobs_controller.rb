@@ -28,7 +28,6 @@ class JobsController < ApplicationController
             :'marker-color' => '#fa0'
           }
         }
-
       end
     end
 
