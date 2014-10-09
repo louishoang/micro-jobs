@@ -15,4 +15,11 @@
 //= require foundation
 //= require mapbox.js
 //= require_tree .
-$(function(){ $(document).foundation(); });
+$(function(){ $(document).foundation();
+  $(".multiselectuser").zmultiselect({
+    live: false,
+    placeholder: "Box number 2",
+    filter: false
+  });
+
+});
