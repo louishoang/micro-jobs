@@ -1,23 +1,19 @@
-// class MapSearch
-//   def initialize(map)
-//     @map = map
-//   end
-
-//    def fetch_users
-
-//    end
-// end
-
 function MapSearch(map) {
   this.map = map;
+  this.resultPanel = new ResultPanel();
 }
 
-MapSearch.prototype.fetchUsers = function() {
+MapSearch.prototype.fetchUsers = function(query) {
+  var url = '/users.json?search=' + query;
+
   $.ajax({
     context: this,
-    url: '/users.json',
+    url: url,
     dataType: 'json',
-    success: this.addMarkers
+    success: function(users) {
+      this.addMarkers(users);
+      this.resultPanel.updateUsers(users);
+    }
   });
 }
 
@@ -42,7 +38,42 @@ MapSearch.prototype.updatePopups = function() {
   });
 }
 
+function ResultPanel(el){
+  this.$el = $('.search_tool');
+  this.$results = this.$el.find('.results-list');
+}
+
+ResultPanel.prototype.updateUsers = function(users) {
+  for (i = 0; i < users.length; i++) {
+    $(".results-list").append
+      ("<div class='panel large-12 columns white_box'>"
+        + "<div class='large-8 columns'>"
+          + "<a href='/users/" + users[i].properties.id + "'>"
+            + users[i].properties.name
+          + "</a>"
+          + "<div class='address'>"
+            + users[i].properties.address
+          + "</div>"
+        + '</div>'
+        + "<div class='large-4 small-12 columns'>"
+          +"<img class='user_avatar' src='"
+            + users[i].properties.image
+          +"'>"
+        + "</div>"
+      +"</div>")
+    ;
+  }
+}
+
 var map = L.mapbox.map('map', 'louishoang.jn2haba8').setView([42.366, -71.109], 13);
 var mapSearch = new MapSearch(map);
 
 mapSearch.fetchUsers();
+
+$('.search_map').on('submit', function(event) {
+  event.preventDefault();
+  var $searchInput = $(this).find("input[name='search']");
+  var query = $searchInput.val();
+  mapSearch.fetchUsers(query);
+  $(".results-list").html("<div>" + "</div>");
+});

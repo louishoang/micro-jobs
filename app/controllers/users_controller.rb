@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @geojson = []
+
     if params[:search]
       search = params[:search]
       @users = User.combined_search(search)
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render json: @geojson}
+      format.json { render json: @geojson }
     end
   end
 
