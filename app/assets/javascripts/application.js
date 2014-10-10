@@ -12,14 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery_ready_selector
 //= require foundation
 //= require mapbox.js
 //= require_tree .
 $(function(){ $(document).foundation();
   $(".multiselectuser").zmultiselect({
     live: false,
-    placeholder: "Box number 2",
-    filter: false
+    placeholder: "Please choose",
+    filter: true
   });
-
 });

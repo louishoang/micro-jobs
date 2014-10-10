@@ -1,41 +1,51 @@
 var map = L.mapbox.map('map', 'louishoang.jn2haba8', {
-  //this is where to put options for map such as auto zoom
-  zoomControl: false });
+//this is where to put options for map such as auto zoom
+  zoomControl: false
+});
 
-// Disable drag and zoom handlers.
-new L.Control.Zoom({ position: 'topright' }).addTo(map);
-map.touchZoom.disable();
-map.doubleClickZoom.disable();
-map.scrollWheelZoom.disable();
+$( document ).ready(function() {
+  $(".search_map").submit(function(event){
+    event.preventDefault();
+    var search = $('#search').val()
+    $.ajax({
+      url: '/users.json',
+      type: "GET",
+      data: { search: search },
+      dataType: 'json',
+      success: function(users) {
+        //find lat and long of first user
+        var myLayer = L.mapbox.featureLayer().addTo(map);
+        var features = [];
+        // mapbox.clearLayers();
+        var firstLongitude = users[0].geometry.coordinates[0];
+        var firstLatitude = users[0].geometry.coordinates[1];
 
-// Disable tap handler, if present.
-if (map.tap) map.tap.disable();
-// $(document).ready(function() {
-  $.ajax({
-    url: '/users.json',
-    dataType: 'json',
-    success: function(users) {
+        //center map
+        map.setView([firstLatitude, firstLongitude], 13);
 
-      var firstLongitude = users[0].geometry.coordinates[0];
-      var firstLatitude = users[0].geometry.coordinates[1];
+        //change zoom button position and disable zoom by mouse and scroll
+        $(users).each(function(){
+          var name = this.properties.name
+          features.push(this);
+          // .bindPopup('<button class="trigger">' + name + '</button>')
+          // .addTo(map);
 
-      // Add markers to map
-      map.markerLayer.setGeoJSON(users);
-
-      // Iterate over each marker on the map
-      map.markerLayer.eachLayer(function(marker) {
-        var properties = marker.feature.properties;
-        // Create the popup content HTML
-        var popupContent = "<a href='/users/" + properties.id + "'>" + properties.name + "</a>";
-
-        // Bind the popup to the marker
-        marker.bindPopup(popupContent, {
-          closeButton: true,
-          minWidth: 200
         });
-      });
-      map.setView([firstLatitude, firstLongitude], 13);
-    }
+        myLayer.setGeoJSON({
+          type: 'FeatureCollection',
+          features: features
+        });
+      }//close success
+    }); // close ajax
   });
-// });
+});
 
+
+new L.Control.Zoom({ position: 'topright' }).addTo(map);
+      map.touchZoom.disable();
+      map.doubleClickZoom.disable();
+      map.scrollWheelZoom.disable();
+
+      // Disable tap handler, if present.
+      if (map.tap) map.tap.disable();
+// });

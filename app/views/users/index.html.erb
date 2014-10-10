@@ -2,7 +2,8 @@
 
 <div class="search_tool large-4 small-12 columns">
   <div>
-    <%= form_tag users_path, :method => 'get' do %>
+    <%= form_tag users_path, :class => "search_map" ,
+     :method => 'get' do %>
       <div>
         <%= text_field_tag :search, params[:search], class: "small-12 columns", placeholder: 'search' %>
       </div>
