@@ -1,61 +1,48 @@
-var map = L.mapbox.map('map', 'louishoang.jn2haba8', {
-  //this is where to put options for map such as auto zoom
-  zoomControl: false
-});
+// class MapSearch
+//   def initialize(map)
+//     @map = map
+//   end
 
+//    def fetch_users
 
-$( document ).ready(function() {
-  var myLayer = L.mapbox.featureLayer().addTo(map);
+//    end
+// end
 
-  $(".search_map").submit(function(event){
-    event.preventDefault();
+function MapSearch(map) {
+  this.map = map;
+}
 
-    var features = [];
-    var search = $('#search').val()
-
-    $.ajax({
-      url: '/users.json',
-      type: "GET",
-      data: { search: search },
-      dataType: 'json',
-      success: function(users) {
-        //find lat and long of first user
-
-        debugger;
-        // remove existing markers
-        myLayer.eachLayer(function(marker) {
-          debugger;
-        });
-
-        features = [];
-        var firstLongitude = users[0].geometry.coordinates[0];
-        var firstLatitude = users[0].geometry.coordinates[1];
-
-        //center map
-        map.setView([firstLatitude, firstLongitude], 13);
-
-        $(users).each(function(){
-          var name = this.properties.name
-          features.push(this);
-          // .bindPopup('<button class="trigger">' + name + '</button>')
-          // .addTo(map);
-
-        });
-        myLayer.setGeoJSON({
-          type: 'FeatureCollection',
-          features: features
-        });
-      }//close success
-    }); // close ajax
+MapSearch.prototype.fetchUsers = function() {
+  $.ajax({
+    context: this,
+    url: '/users.json',
+    dataType: 'json',
+    success: this.addMarkers
   });
-});
+}
 
-//change zoom button position and disable zoom by mouse and scroll
-new L.Control.Zoom({ position: 'topright' }).addTo(map);
-      map.touchZoom.disable();
-      map.doubleClickZoom.disable();
-      map.scrollWheelZoom.disable();
+MapSearch.prototype.addMarkers = function(users) {
+  // Add markers to map
+  this.map.markerLayer.setGeoJSON(users);
+  this.updatePopups();
+}
 
-      // Disable tap handler, if present.
-      if (map.tap) map.tap.disable();
-// });
+MapSearch.prototype.updatePopups = function() {
+  // Iterate over each marker on the map
+  this.map.markerLayer.eachLayer(function(marker) {
+    var properties = marker.feature.properties;
+    // Create the popup content HTML
+    var popupContent = "<a href='/users/" + properties.id + "'>" + properties.name + "</a>";
+
+    // Bind the popup to the marker
+    marker.bindPopup(popupContent, {
+      closeButton: true,
+      minWidth: 200
+    });
+  });
+}
+
+var map = L.mapbox.map('map', 'louishoang.jn2haba8').setView([42.366, -71.109], 13);
+var mapSearch = new MapSearch(map);
+
+mapSearch.fetchUsers();
