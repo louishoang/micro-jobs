@@ -2,29 +2,32 @@
 
 <div class="search_tool large-4 small-12 columns">
   <div>
-    <%= form_tag users_path, :method => 'get' do %>
+    <%= form_tag users_path, :class => "search_map" ,
+     :method => 'get' do %>
       <div>
         <%= text_field_tag :search, params[:search], class: "small-12 columns", placeholder: 'search' %>
       </div>
     <% end %>
   </div>
-  <% if @users %>
-    <% @users.each do |user| %>
-      <div class="panel large-12 columns white_box">
-        <div class="large-8 columns">
-          <%= link_to user.first_name + ' ' + user.last_name, user_path(user) %>
-          <div class="address">
-            <% if user.address %>
-              <%= user.address %>
-            <% else %>
-              Address not disclosed
-            <% end %>
+  <div class="results-list">
+    <% if @users %>
+      <% @users.each do |user| %>
+        <div class="panel large-12 columns white_box">
+          <div class="large-8 columns name">
+            <%= link_to user.first_name + ' ' + user.last_name, user_path(user) %>
+            <div class="address">
+              <% if user.address %>
+                <%= user.address %>
+              <% else %>
+                Address not disclosed
+              <% end %>
+            </div>
+          </div>
+          <div class="large-4 small-12 columns">
+            <%= image_tag user.avatar_url, class: "user_avatar" %>
           </div>
         </div>
-        <div class="large-4 small-12 columns">
-          <%= image_tag user.avatar_url, class: "user_avatar" %>
-        </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

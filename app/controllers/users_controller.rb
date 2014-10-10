@@ -5,40 +5,39 @@ class UsersController < ApplicationController
 
   def index
     @geojson = []
-    # User.where("user_name ILIKE :search OR CONCAT(first_name, ' ', last_name) ILIKE :search", search: search)
-     # just for temporary usage
+
     if params[:search]
       search = params[:search]
-      @users = User.where("user_name ILIKE :search OR CONCAT(first_name, ' ', last_name) ILIKE :search", search: search)
+      @users = User.combined_search(search)
     else
       @users = User.all
-      @users.each do |user|
-        next unless user.longitude && user.latitude
+    end
 
-        @geojson << {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [user.longitude, user.latitude]
-          },
-          properties: {
-            role: "User",
-            name: user.first_name + ' ' + user.last_name,
-            address: user.address,
-            email: user.user_name,
-            image: user.avatar_url,
-            id: user.id,
-            :'marker-size' => 'medium',
-            :'marker-symbol' => 'rocket',
-            :'marker-color' => '#fa0'
-          }
+    @users.each do |user|
+      next unless user.longitude && user.latitude
+      @geojson << {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [user.longitude, user.latitude]
+        },
+        properties: {
+          role: "User",
+          name: user.first_name + ' ' + user.last_name,
+          address: user.address,
+          email: user.user_name,
+          image: user.avatar_url,
+          id: user.id,
+          :'marker-size' => 'medium',
+          :'marker-symbol' => 'rocket',
+          :'marker-color' => '#fa0'
         }
-      end
+      }
     end
 
     respond_to do |format|
       format.html
-      format.json {render json: @geojson}
+      format.json { render json: @geojson }
     end
   end
 
