@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009151138) do
+ActiveRecord::Schema.define(version: 20141010214152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "fuzzystrmatch"
+  enable_extension "pg_trgm"
 
   create_table "job_skill_associations", force: true do |t|
     t.integer  "job_id"
