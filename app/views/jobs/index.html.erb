@@ -1,32 +1,34 @@
-<div id='map_for_jobs' class='dark large-12 small-12 columns'></div>
+<div id='map' class='dark large-12 small-12 columns'></div>
 
 <div class="search_tool large-4 small-12 columns" style="overflow-y: scroll;">
   <div>
-    <%= form_tag jobs_path, :method => 'get' do %>
+    <%= form_tag jobs_path, :class => "search_job", :method => 'get' do %>
       <div>
         <%= text_field_tag :search, params[:search], class: "small-12 columns", placeholder: 'search' %>
       </div>
     <% end %>
   </div>
-  <% if @jobs %>
-    <% @jobs.each do |job| %>
-      <div class="panel large-12 columns white_box">
-        <div class="large-8 small-12 columns ">
-          <%= link_to job.name, job_path(job) %>
-          <div class="address">
-            <% if job.location %>
-              <%= job.location %>
-            <% else %>
-              Address not disclosed
+  <div class="results-list">
+    <% if @jobs %>
+      <% @jobs.each do |job| %>
+        <div class="panel large-12 columns white_box">
+          <div class="large-8 small-12 columns name">
+            <%= link_to job.name, job_path(job) %>
+            <div class="address">
+              <% if job.location %>
+                <%= job.location %>
+              <% else %>
+                Address not disclosed
+              <% end %>
+            </div>
+          </div>
+          <div class="large-4 small-12 columns">
+            <% if job.employer %>
+              <%= image_tag job.employer.avatar_url, class: "user_avatar" %>
             <% end %>
           </div>
         </div>
-        <div class="large-4 small-12 columns">
-          <% if job.employer %>
-            <%= image_tag job.employer.avatar_url, class: "user_avatar" %>
-          <% end %>
-        </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

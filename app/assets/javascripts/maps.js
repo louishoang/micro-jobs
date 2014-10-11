@@ -17,19 +17,39 @@ MapSearch.prototype.fetchUsers = function(query) {
   });
 }
 
-MapSearch.prototype.addMarkers = function(users) {
-  // Add markers to map
-  this.map.markerLayer.setGeoJSON(users);
-  this.updatePopups();
+MapSearch.prototype.fetchJobs = function(query) {
+  var url = '/jobs.json?search=' + query;
+
+  $.ajax({
+    context: this,
+    url: url,
+    dataType: 'json',
+    success: function(jobs) {
+      this.addMarkers(jobs);
+      this.resultPanel.updateJobs(jobs);
+    }
+  });
 }
 
-MapSearch.prototype.updatePopups = function() {
+MapSearch.prototype.addMarkers = function(data) {
+  // Add markers to map
+  this.map.markerLayer.setGeoJSON(data);
+  this.updatePopups(data);
+}
+
+MapSearch.prototype.updatePopups = function(data) {
+  if(data){
+   var role = data[0].properties.role;
+  }
   // Iterate over each marker on the map
   this.map.markerLayer.eachLayer(function(marker) {
     var properties = marker.feature.properties;
     // Create the popup content HTML
-    var popupContent = "<a href='/users/" + properties.id + "'>" + properties.name + "</a>";
-
+    if(role === "Job"){
+      var popupContent = "<a href='/jobs/" + properties.id + "'>" + properties.name + "</a>";
+    } else {
+      var popupContent = "<a href='/users/" + properties.id + "'>" + properties.name + "</a>";
+    }
     // Bind the popup to the marker
     marker.bindPopup(popupContent, {
       closeButton: true,
@@ -44,6 +64,11 @@ function ResultPanel(el){
 }
 
 ResultPanel.prototype.updateUsers = function(users) {
+  if(users){
+    var firstuserlat = users[0].geometry.coordinates[1]
+    var firstuserlng = users[0].geometry.coordinates[0]
+    map.setView([firstuserlat, firstuserlng], 13);
+  }
   for (i = 0; i < users.length; i++) {
     $(".results-list").append
       ("<div class='panel large-12 columns white_box'>"
@@ -65,6 +90,48 @@ ResultPanel.prototype.updateUsers = function(users) {
   }
 }
 
+ResultPanel.prototype.updateJobs = function(jobs) {
+  var firstuserlat = jobs[0].geometry.coordinates[1]
+  var firstuserlng = jobs[0].geometry.coordinates[0]
+  map.setView([firstuserlat, firstuserlng], 13);
+
+  for (i = 0; i < jobs.length; i++) {
+    $(".results-list").append
+      ("<div class='panel large-12 columns white_box'>"
+        + "<div class='large-8 columns'>"
+          + "<a href='/jobs/" + jobs[i].properties.id + "'>"
+            + jobs[i].properties.name
+          + "</a>"
+          + "<div class='address'>"
+            + jobs[i].properties.location
+          + "</div>"
+        + '</div>'
+        + "<div class='large-4 small-12 columns'>"
+          +"<img class='user_avatar' src='"
+            + jobs[i].properties.image
+          +"'>"
+        + "</div>"
+      +"</div>")
+    ;
+  }
+}
+
+$('.search_map').on('submit', function(event) {
+  event.preventDefault();
+  var $searchInput = $(this).find("input[name='search']");
+  var query = $searchInput.val();
+  mapSearch.fetchUsers(query);
+  $(".results-list").html("<div>" + "</div>");
+});
+
+$('.search_job').on('submit', function(event) {
+  event.preventDefault();
+  var $searchInput = $(this).find("input[name='search']");
+  var query = $searchInput.val();
+  mapSearch.fetchJobs(query);
+  $(".results-list").html("<div>" + "</div>");
+});
+
 var map = L.mapbox.map('map', 'louishoang.jn2haba8', { zoomControl: false } )
           .setView([42.366, -71.109], 13);
 var mapSearch = new MapSearch(map);
@@ -77,13 +144,4 @@ var mapSearch = new MapSearch(map);
       // Disable tap handler, if present.
       if (map.tap) map.tap.disable();
 
-
 mapSearch.fetchUsers();
-
-$('.search_map').on('submit', function(event) {
-  event.preventDefault();
-  var $searchInput = $(this).find("input[name='search']");
-  var query = $searchInput.val();
-  mapSearch.fetchUsers(query);
-  $(".results-list").html("<div>" + "</div>");
-});
