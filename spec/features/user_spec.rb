@@ -26,4 +26,11 @@ feature "User login using facebook" do
 
     expect(page).to have_content("User profile is updated successfully")
   end
+
+  scenario "unauthorized user can't edit profile" do
+    user = FactoryGirl.create(:user)
+    visit edit_user_path(user)
+
+    expect(page).to have_content("You need to sign in if you want to do that!")
+  end
 end
