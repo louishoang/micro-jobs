@@ -2,7 +2,7 @@ class Job < ActiveRecord::Base
   include PgSearch
 
   pg_search_scope :combined_search,
-                  :against => [:name, :description],
+                  :against => [:name, :description, :location],
                   :using => { :trigram => { :threshold => 0.1 },
                     :tsearch  => { :dictionary => "english",
                                 :prefix => true,
