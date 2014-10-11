@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
   before_action :authenticate!, only: [:new, :edit, :update]
   before_action :find_job, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user!, only: [:edit, :update]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
+  # before_action owner?(job), only: [:edit, :update, :destroy]
 
   def index
     @geojson = []
@@ -97,6 +98,7 @@ class JobsController < ApplicationController
   end
 
   def authorize_user!
+    binding.pry
     unless @user == current_user
       redirect_to root_url,
         notice: "You need to sign in!"

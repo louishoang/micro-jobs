@@ -1,8 +1,16 @@
 <div class="row job_page">
-  <span class="go_back"><%= link_to '< Go Back', :back %></span>
-  <div class="container"><%= image_tag @avatar, class: "photos_on_job" %></div>
+  <span class="go_back">
+    <%= link_to '< Go Back', :back %>
+  </span>
+  <div class="container">
+    <%= image_tag @avatar, class: "photos_on_job" %>
+  </div>
   <hr>
-  <div><h2><%= @job.name %></h2></div>
+  <div>
+    <h2>
+      <%= @job.name %>
+    </h2>
+  </div>
   <div>Location: <%= @job.location %></div>
   <div>Budget: $<%= @job.budget %></div>
   <div>

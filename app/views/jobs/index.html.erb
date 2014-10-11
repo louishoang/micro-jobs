@@ -2,7 +2,7 @@
 
 <div class="search_tool large-4 small-12 columns" style="overflow-y: scroll;">
   <div>
-    <%= form_tag jobs_path, :class => "search_job", :method => 'get' do %>
+    <%= form_tag jobs_path, autocomplete: "off", :class => "search_job", :method => 'get' do %>
       <div>
         <%= text_field_tag :search, params[:search], class: "small-12 columns", placeholder: 'search' %>
       </div>
