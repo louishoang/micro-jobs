@@ -1,5 +1,14 @@
 class Job < ActiveRecord::Base
   include PgSearch
+
+  pg_search_scope :combined_search,
+                  :against => [:name, :description, :location],
+                  :using => { :trigram => { :threshold => 0.1 },
+                    :tsearch  => { :dictionary => "english",
+                                :prefix => true,
+                                :any_word => true
+                                }}
+
   extend ::Geocoder::Model::ActiveRecord
 
   has_many :job_skill_associations

@@ -12,10 +12,14 @@ class User < ActiveRecord::Base
   after_validation :geocode, if: :address_changed?
 
   include PgSearch
-  # multisearchable against: [:user_name, :first_name, :last_name, :address]
 
    pg_search_scope :combined_search,
-                  :against => [:first_name, :last_name, :user_name]
+                  :against => [:first_name, :last_name, :user_name],
+                  :using => { :trigram => { :threshold => 0.1 },
+                    :tsearch  => { :dictionary => "english",
+                                :prefix => true,
+                                :any_word => true
+                                }}
 
   extend ::Geocoder::Model::ActiveRecord
 

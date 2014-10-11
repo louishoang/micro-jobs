@@ -7,28 +7,31 @@ class JobsController < ApplicationController
     @geojson = []
     if params[:search]
       search = params[:search]
-      @jobs = Job.where("name ILIKE :search", search: search)
+      @jobs = Job.combined_search(search)
     else
       @jobs = Job.all
-      @jobs.each do |job|
-        next unless job.longitude && job.latitude
+    end
 
-        @geojson << {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [job.longitude, job.latitude]
-          },
-          properties: {
-            role: "Job",
-            name: job.name,
-            id: job.id,
-            :'marker-size' => 'medium',
-            :'marker-symbol' => 'marker-stroked',
-            :'marker-color' => '#fa0'
-          }
+    @jobs.each do |job|
+      next unless job.longitude && job.latitude
+
+      @geojson << {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [job.longitude, job.latitude]
+        },
+        properties: {
+          role: "Job",
+          name: job.name,
+          id: job.id,
+          location: job.location,
+          image: job.employer.avatar_url,
+          :'marker-size' => 'medium',
+          :'marker-symbol' => 'marker-stroked',
+          :'marker-color' => '#fa0'
         }
-      end
+      }
     end
 
     respond_to do |format|
