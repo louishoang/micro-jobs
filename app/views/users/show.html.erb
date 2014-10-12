@@ -4,7 +4,7 @@
     <dl class="tabs large-12 columns" data-tab>
       <dd class="active"><a href="#panel1">Primary</a></dd>
       <% if owner?(@user) %>
-        <dd><a href="#panel2">Remind Me</a></dd>
+        <dd><a href="#panel2">My Projects</a></dd>
         <dd><a href="#panel3">My Profile</a></dd>
       <% end %>
     </dl>
@@ -27,7 +27,26 @@
       </div>
       <% if owner?(@user) %>
         <div class="content" id="panel2">
-          <p>This is the second panel of the basic tab example. This is the second panel of the   basic tab example.</p>
+          <p>
+            <div>
+              <table class="table">
+                <tr>
+                  <th><%= sortable "name" %></th>
+                  <th><%= sortable "location" %></th>
+                  <th><%= sortable "budget" %></th>
+                  <th><%= sortable "created_at", "Created At" %></th>
+                </tr>
+                <% for job in @jobs %>
+                  <tr>
+                    <td><%= job.name %></td>
+                    <td><%= job.location %></td>
+                    <td><%= job.budget %></td>
+                    <td><%= job.created_at %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+          </p>
         </div>
         <div class="content" id="panel3">
             <p><%= render "users/edit", user: @user %></p>
