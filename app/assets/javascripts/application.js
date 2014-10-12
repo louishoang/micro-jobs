@@ -22,4 +22,11 @@ $(function(){ $(document).foundation();
     placeholder: "Please choose",
     filter: true
   });
+
+  /// can't use #job_table th a on click
+  //the following .on() can be used to bind to current and future elements
+  $("#job_table").on("click", "th a", function(){
+    $.getScript(this.href);
+    return false;
+  });
 });

@@ -1,3 +1,7 @@
+//Note:
+//this js file work but very junky, looking to fix when I have time
+//////////////////////////////////////////////////////////////////////
+
 function MapSearch(map) {
   this.map = map;
   this.resultPanel = new ResultPanel();
