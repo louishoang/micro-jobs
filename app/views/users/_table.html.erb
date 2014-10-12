@@ -1,0 +1,16 @@
+<table class="table pretty">
+  <tr>
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "location" %></th>
+    <th><%= sortable "budget" %></th>
+    <th><%= sortable "created_at", "Created At" %></th>
+  </tr>
+  <% for job in @jobs %>
+    <tr>
+      <td><%= link_to job.name, job_path(job) %></td>
+      <td><%= job.location %></td>
+      <td><%= job.budget %></td>
+      <td><%= job.created_at %></td>
+    </tr>
+  <% end %>
+</table>
