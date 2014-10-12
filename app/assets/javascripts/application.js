@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery_ready_selector
 //= require foundation
-//= require foundation/app
 //= require mapbox.js
 //= require_tree .
 $(function(){ $(document).foundation();
