@@ -1,3 +1,40 @@
+#welcome_text{
+  font-size: 5vw;
+  color: white;
+
+text-shadow: -1px -1px 0 hsl(80, 70%, 35%),
+
+             -2px -2px 1px hsl(80, 70%, 35%);
+}
+
+.trans_box{
+  background-color: rgba(5,4,2,0.2);
+  width: 60%;
+  height: auto;
+  margin: 2% 0% 0% 29%;
+}
+
+.welcome_bg{
+  background-image: url("http://contemporarycity.org/wp-content/uploads/2014/04/architecture-buildings-boats-boston-cities.jpg");
+  position: fixed;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  height: 105%;
+  background-size: cover;
+  z-index: -99;
+
+  @media #{$small-only} {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-size: cover;
+    z-index: -99;
+  }
+}
+
 .go_back{
   float: left;
 }
@@ -13,9 +50,8 @@
 .alert_customized{
   font-size: 0.8em;
   color: white;
-  position: relative;
-  margin-left: 420px;
-  margin-top: 15px;
+  position: fixed;
+  margin-top: 1%;
 }
 
 .welcome{
@@ -131,4 +167,103 @@
   border-radius: 99em;
   border: 5px solid #eee;
   box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+}
+
+// Welcome page
+.photo_rotate_div{
+  border-style: solid;
+  border-width: 8px;
+  left: 0;
+  background-color: #F6F6F4;
+  opacity: 0.95;
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  margin-top: 38%;
+}
+#polaroid {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 5% 0 5% 12%;
+}
+
+#polaroid .cadre {
+  width:220px;
+  height:274px;
+  background-color: #FFFFFF;
+  border:1px solid black;
+  display: inline-block;
+}
+#polaroid .cadre.second {
+  margin-left: 10px;
+  transform:rotate(14deg);
+  -ms-transform:rotate(14deg); /* IE 9 */
+  -moz-transform:rotate(14deg); /* Firefox */
+  -webkit-transform:rotate(14deg); /* Safari et Chrome */
+  -o-transform:rotate(14deg); /* Opera */
+}
+#polaroid .cadre.troisieme {
+  transform:rotate(-9deg);
+  -ms-transform:rotate(-9deg); /* IE 9 */
+  -moz-transform:rotate(-9deg); /* Firefox */
+  -webkit-transform:rotate(-9deg); /* Safari et Chrome */
+  -o-transform:rotate(-9deg); /* Opera */
+}
+#polaroid .photo {
+  width: 194px;
+  height: 194px;
+  background-color: #DDD;
+  margin-top: 15px;
+  margin-left: 13px;
+}
+#polaroid .shadow {
+    display:block;
+    position:relative;
+}
+/* bordure intérieure autour de la photo */
+#polaroid .shadow::before {
+    content:'';
+    position:absolute;
+    width:194px;
+    height:194px;
+  box-shadow:0px 0px 15px 1px rgba(0,0,0,1) inset;
+}
+#polaroid .cadre span {
+  display: block;
+  text-align: center;
+  font-family: Consolas;
+  font-size: 1.2em;
+}
+
+.footer{
+  border-style: solid;
+  border-width: 8px;
+  left: 0;
+  background-color: #333333;
+  opacity: 0.95;
+  z-index: 99;
+  width: 100%;
+}
+
+.pretty {
+  border-collapse: collapse;
+}
+
+.pretty th{
+  text-align: left;
+}
+
+.pretty th .asc {
+  background-image: url("http://www.guppygames.com/mail/skins/default/images/buttons/up_arrow.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 20px;
+}
+
+.pretty th .desc {
+  background-image: url("http://www.laprendo.com/data/1/Folder/Images/downArrow.gif");
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 20px;
 }

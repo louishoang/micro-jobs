@@ -630,10 +630,10 @@ $body-font-family: "sans-serif", "Papyrus", "Lucida Sans Unicode", "Geneva";
 // $input-focus-border-color: scale-color($white, $lightness: -40%);
 // $input-border-style: solid;
 // $input-border-width: 1px;
-// $input-border-radius: $global-radius;
+// $input-border-radius: 50px;
 // $input-disabled-bg: $gainsboro;
 // $input-disabled-cursor: $cursor-default-value;
-// $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
@@ -1277,11 +1277,11 @@ $body-font-family: "sans-serif", "Papyrus", "Lucida Sans Unicode", "Geneva";
 // $table-border-color: $gainsboro;
 
 // These control the table head styles
-// $table-head-bg: $white-smoke  ;
-// $table-head-font-size: rem-calc(14);
+$table-head-bg: #FF0000  ;
+$table-head-font-size: rem-calc(14);
 // $table-head-font-color: $jet;
-// $table-head-font-weight: $font-weight-bold;
-// $table-head-padding: rem-calc(8 10 10);
+$table-head-font-weight: bold;
+$table-head-padding: rem-calc(8 10 10);
 
 // These control the row padding and font styles
 // $table-row-padding: rem-calc(9 10);
@@ -1298,19 +1298,19 @@ $body-font-family: "sans-serif", "Papyrus", "Lucida Sans Unicode", "Geneva";
 
 // $include-html-tabs-classes: $include-html-classes;
 
-// $tabs-navigation-padding: rem-calc(16);
+$tabs-navigation-padding: rem-calc(13);
 // $tabs-navigation-bg-color: $silver  ;
 // $tabs-navigation-active-bg-color: $white;
 // $tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
 // $tabs-navigation-font-color: $jet;
 // $tabs-navigation-active-font-color: $tabs-navigation-font-color;
-// $tabs-navigation-font-size: rem-calc(16);
+$tabs-navigation-font-size: rem-calc(16);
 // $tabs-navigation-font-family: $body-font-family;
 
 // $tabs-content-margin-bottom: rem-calc(24);
-// $tabs-content-padding: $column-gutter/2;
+// $tabs-content-padding: 1rem;
 
-// $tabs-vertical-navigation-margin-bottom: 1.25rem;
+// $tabs-vertical-navigation-margin-bottom: 1rem;
 
 // 32. Thumbnails
 // - - - - - - - - - - - - - - - - - - - - - - - - -

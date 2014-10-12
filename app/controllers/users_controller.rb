@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate!, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :authorize_user!, only: [:edit, :update]
+  helper_method :sort_column, :sort_direction
 
   def index
     @geojson = []
@@ -42,6 +43,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @jobs = @user.jobs.order(sort_column + " " + sort_direction)
     @avatar = @user.avatar_url
     @user_name = @user.user_name
     @first_name = @user.first_name
@@ -60,6 +62,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def sort_column
+    @user.jobs.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :address)
