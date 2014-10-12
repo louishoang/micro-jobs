@@ -245,3 +245,25 @@ text-shadow: -1px -1px 0 hsl(80, 70%, 35%),
   z-index: 99;
   width: 100%;
 }
+
+.pretty {
+  border-collapse: collapse;
+}
+
+.pretty th{
+  text-align: left;
+}
+
+.pretty th .asc {
+  background-image: url("http://www.guppygames.com/mail/skins/default/images/buttons/up_arrow.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 20px;
+}
+
+.pretty th .desc {
+  background-image: url("http://www.laprendo.com/data/1/Folder/Images/downArrow.gif");
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 20px;
+}
