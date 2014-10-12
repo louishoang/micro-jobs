@@ -3,7 +3,7 @@
   <%= f.input :name, required: true %>
   <%= f.input :location, required: true %>
   <%= f.input :budget, required: true %>
-  <%= f.association :skills, label: "What skills are required for this job?",
+  <%= f.association :skills, label: "Please choose your skills",
                     collection: Skill.all,
                     input_html: { class: 'multiselectuser',
                     multiple: true } %>

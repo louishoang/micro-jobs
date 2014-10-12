@@ -55,7 +55,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    params[:user][:skill_ids].pop
+    @skills_list = params[:user][:skill_ids]
     if @user.update(user_params)
+      @skills_list.each do |skill_id|
+        UserSkillAssociation.create(user_id: @user.id, skill_id: skill_id )
+      end
       flash[:notice]= "User profile is updated successfully"
       redirect_to user_path(@user)
     end
@@ -72,7 +77,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :address)
+    params.require(:user).permit(:first_name, :last_name, :address, :skills_ids => [] )
   end
 
   def set_user

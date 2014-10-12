@@ -177,7 +177,7 @@ text-shadow: -1px -1px 0 hsl(80, 70%, 35%),
   background-color: #F6F6F4;
   opacity: 0.95;
   position: absolute;
-  z-index: 99;
+  z-index: -10;
   width: 100%;
   margin-top: 38%;
 }
@@ -190,7 +190,7 @@ text-shadow: -1px -1px 0 hsl(80, 70%, 35%),
 
 #polaroid .cadre {
   width:220px;
-  height:274px;
+  height:314px;
   background-color: #FFFFFF;
   border:1px solid black;
   display: inline-block;
