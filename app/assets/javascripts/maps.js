@@ -1,7 +1,7 @@
 //Note:
 //this js file work but very junky, looking to fix when I have time
 //////////////////////////////////////////////////////////////////////
-
+// Add markers to map
 function MapSearch(map) {
   this.map = map;
   this.resultPanel = new ResultPanel();
