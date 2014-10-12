@@ -63,7 +63,6 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-
     @job.employer_id = current_user.id
     params[:job][:skill_ids].shift
     @skills_list = params[:job][:skill_ids]
