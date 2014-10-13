@@ -6,5 +6,6 @@ FactoryGirl.define do
     first_name "testname"
     last_name "testlastname"
     address "33 harrison ave, boston, ma"
+    role "member"
   end
 end

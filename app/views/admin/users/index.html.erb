@@ -1,5 +1,5 @@
 Here is a list of users Mr. Admin:
-<ul>
+<ul class="admin_users">
   <% @users.each do |user| %>
     <li>
       <%= link_to user.user_name, admin_user_path(user) %>
