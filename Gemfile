@@ -34,6 +34,8 @@ gem 'mapbox-rails'
 gem 'font-awesome-rails'
 gem 'rails_12factor', group: :production
 gem 'will_paginate'
+gem 'react-rails'
+gem 'showdown-rails'
 
 group :development, :test do
   gem 'pry-rails'

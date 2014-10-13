@@ -49,6 +49,8 @@ class UsersController < ApplicationController
     @first_name = @user.first_name
     @last_name = @user.last_name
     @address = @user.address
+    @comments = @user.comments
+    @comment = Comment.new
   end
 
   def edit
