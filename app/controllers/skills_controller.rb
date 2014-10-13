@@ -1,5 +1,10 @@
 class SkillsController < ApplicationController
-  # for now anyone can add skill but inthe future only admin can
+  # this should be listed under admin namespacing but
+  # I finished this page before admin namespacing and don't have
+  # enought time to fix.
+
+  before_filter :admin_authorize!
+
   def index
     @skills = Skill.all
   end

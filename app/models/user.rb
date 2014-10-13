@@ -32,4 +32,8 @@ class User < ActiveRecord::Base
       user.last_name = auth_hash[:info][:last_name]
     end
   end
+
+  def is_admin?
+    role == 'admin'
+  end
 end

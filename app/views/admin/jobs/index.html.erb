@@ -1,0 +1,11 @@
+Here is a list of jobs:
+<ul>
+  <% @jobs.each do |job| %>
+    <li>
+      <%= link_to job.name, job_path(job) %>
+      <%= link_to "Delete job", admin_job_path(job), method: :delete, class: "button tiny round" %>
+    </li>
+  </ul>
+<% end %>
+
+<%= will_paginate @jobs %>
