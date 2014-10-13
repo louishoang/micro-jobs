@@ -58,6 +58,8 @@ class UsersController < ApplicationController
     params[:user][:skill_ids].pop
     @skills_list = params[:user][:skill_ids]
     if @user.update(user_params)
+      @old_skills = UserSkillAssociation.where(user_id: current_user.id)
+      @old_skills.destroy_all
       @skills_list.each do |skill_id|
         UserSkillAssociation.create(user_id: @user.id, skill_id: skill_id )
       end
