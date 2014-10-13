@@ -28,7 +28,7 @@ class JobsController < ApplicationController
           location: job.location,
           image: job.employer.avatar_url,
           :'marker-size' => 'medium',
-          :'marker-symbol' => 'marker-stroked',
+          :'marker-symbol' => 'suitcase',
           :'marker-color' => '#fa0'
         }
       }
