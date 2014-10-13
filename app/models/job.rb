@@ -3,6 +3,7 @@ class Job < ActiveRecord::Base
 
   pg_search_scope :combined_search,
                   :against => [:name, :description, :location],
+                  :associated_against => { :skills => :name },
                   :using => { :trigram => { :threshold => 0.1 },
                     :tsearch  => { :dictionary => "english",
                                 :prefix => true,
