@@ -1,3 +1,5 @@
+<%= link_to "Add skill", new_skill_path, class: "button tiny round" %>
+<br>
 <% @skills.each do |skill| %>
   <div><%= skill.name %></div>
 <% end %>
