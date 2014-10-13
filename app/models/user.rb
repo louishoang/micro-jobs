@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
    pg_search_scope :combined_search,
                   :against => [:first_name, :last_name, :user_name],
+                  :associated_against => { :skills => :name },
                   :using => { :trigram => { :threshold => 0.1 },
                     :tsearch  => { :dictionary => "english",
                                 :prefix => true,
