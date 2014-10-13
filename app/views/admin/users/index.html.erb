@@ -1,0 +1,9 @@
+Here is a list of users Mr. Admin:
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.user_name, admin_user_path(user) %>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate @users %>

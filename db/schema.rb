@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013003318) do
+ActiveRecord::Schema.define(version: 20141013023923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,17 +66,18 @@ ActiveRecord::Schema.define(version: 20141013003318) do
   add_index "user_skill_associations", ["user_id", "skill_id"], name: "index_user_skill_associations_on_user_id_and_skill_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "provider",   null: false
-    t.string   "uid",        null: false
-    t.string   "user_name",  null: false
-    t.string   "first_name", null: false
-    t.string   "last_name",  null: false
+    t.string   "provider",                      null: false
+    t.string   "uid",                           null: false
+    t.string   "user_name",                     null: false
+    t.string   "first_name",                    null: false
+    t.string   "last_name",                     null: false
     t.string   "avatar_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "role",       default: "member"
   end
 
 end

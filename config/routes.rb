@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   resources :skills
   resource :session, only: [:new, :create, :destroy]
 
+  namespace :admin do
+    resources :users
+    resources :jobs
+    resources :skills
+  end
+
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: "sessions#failure"
   get "/sign_out", to: "sessions#destroy"
