@@ -31,6 +31,7 @@ gem 'simple_form'
 gem 'geocoder'
 gem 'pg_search'
 gem 'mapbox-rails'
+gem 'font-awesome-rails'
 gem 'rails_12factor', group: :production
 gem 'will_paginate'
 

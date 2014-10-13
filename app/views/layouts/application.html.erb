@@ -30,20 +30,30 @@
         <!-- Right Nav Section -->
 
         <ul class="right" style="margin: 0px 15px">
-          <li class="active"><a href="#">Notification</a></li>
+          <% if signed_in? && current_user.is_admin? %>
+            <li>
+              <a href="/admin/users"><i class="fa fa-users"></i></a>
+            </li>
+            <li>
+              <a href="/admin/jobs"><i class="fa fa-briefcase"></i></a>
+            </li>
+            <li>
+              <a href="/skills/"><i class="fa fa-puzzle-piece"></i></a>
+            </li>
+          <% end %>
           <li class="has-dropdown" style="margin: 5px">
             <% if signed_in? %>
-            <span class="white">
-              <%= current_user.first_name + ' ' + current_user.last_name %>
-            </span>
-            <img style="border-radius: 20px; width: 35px; height: 35px" src="<%= current_user.avatar_url %>">
-            <ul class="dropdown">
-              <li><%= link_to "Profile", user_path(current_user) %></li>
-              <li class="active"><a href="/sign_out">Sign out</a></li>
-            </ul>
+              <span class="white">
+                <%= current_user.first_name + ' ' + current_user.last_name %>
+              </span>
+              <img style="border-radius: 20px; width: 35px; height: 35px" src="<%= current_user.avatar_url %>">
+              <ul class="dropdown">
+                <li><%= link_to "Profile", user_path(current_user) %></li>
+                <li class="active"><a href="/sign_out">Sign out</a></li>
+              </ul>
             <% else %>
-            <li><a href="/auth/facebook">Sign in</a></li>
-          <% end %>
+              <li><a href="/auth/facebook">Sign in</a></li>
+            <% end %>
           </li>
         </ul>
 
