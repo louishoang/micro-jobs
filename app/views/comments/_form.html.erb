@@ -1,25 +1,10 @@
-<%= form_for [@user, @comment] do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited his comment from being saved:</h2>
-
-      <ul>
-      <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= simple_form_for [@user, @comment] do |f| %>
+  <%= f.error_notification %>
+  <% if current_user %>
+    <%= f.input :author, :input_html => { :value => current_user.first_name + ' ' + current_user.last_name }, required: true %>
+  <% else %>
+    <%= f.input :author, required: true %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Add comment",  class: "button active"  %>
-  </div>
+  <%= f.input :text, input_html:{rows: 10, cols: 50} %>
+  <%= f.button :submit %>
 <% end %>

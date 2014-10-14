@@ -43,7 +43,7 @@
         <p>
           <div class="row job_page" style="margin-top: 1%">
             <p><%= render "comments/show", comment: @comment %></p>
-            <p><%= render "comments/form", comment: @comment %></p>
+            <p><%= render :template => "comments/new", comment: @comment %></p>
           </div>
         </p>
       </div>

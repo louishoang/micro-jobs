@@ -3,5 +3,5 @@ class Comment < ActiveRecord::Base
 
   validates :author, presence: true
   validates :text, presence: true
-  validates :user, presence: true
+  validates :user_id, presence: true
 end
