@@ -136,16 +136,16 @@ $('.search_job').on('submit', function(event) {
   $(".results-list").html("<div>" + "</div>");
 });
 
-var map = L.mapbox.map('map', 'louishoang.jn2haba8', { zoomControl: false } )
-          .setView([42.366, -71.109], 13);
-var mapSearch = new MapSearch(map);
+// var map = L.mapbox.map('map', 'louishoang.jn2haba8', { zoomControl: false } )
+//           .setView([42.366, -71.109], 13);
+// var mapSearch = new MapSearch(map);
 
 // //change zoom button position and disable zoom by mouse and scroll
-      new L.Control.Zoom({ position: 'topright' }).addTo(map);
-      map.touchZoom.disable();
-      map.doubleClickZoom.disable();
-      map.scrollWheelZoom.disable();
-      // Disable tap handler, if present.
-      if (map.tap) map.tap.disable();
+      // new L.Control.Zoom({ position: 'topright' }).addTo(map);
+      // map.touchZoom.disable();
+      // map.doubleClickZoom.disable();
+      // map.scrollWheelZoom.disable();
+      // // Disable tap handler, if present.
+      // if (map.tap) map.tap.disable();
 
-mapSearch.fetchUsers();
+// mapSearch.fetchUsers();
