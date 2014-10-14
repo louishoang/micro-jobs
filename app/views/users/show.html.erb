@@ -7,6 +7,7 @@
         <dd><a href="#panel2"><i class="fa fa-folder-open"></i> My Projects</a></dd>
         <dd><a href="#panel3"><i class="fa fa-user"></i> My Profile</a></dd>
       <% end %>
+      <dd><a href="#panel4"><i class="fa fa-bullhorn"></i> My Reputation</a></dd>
     </dl>
     <div class="tabs-content small-12 columns">
       <div class="content active" id="panel1">
@@ -25,6 +26,7 @@
           </p>
         </div>
       </div>
+
       <% if owner?(@user) %>
         <div class="content" id="panel2">
           <p>
@@ -37,6 +39,18 @@
             <p><%= render "users/edit", user: @user %></p>
         </div>
       <% end %>
+      <div class="content" id="panel4">
+        <p>
+          <div class="row job_page" style="margin-top: 1%">
+            <p>
+              <%= render :template => "comments/new", comment: @comment %>
+            </p>
+            <div id="comments">
+            </div>
+            <p><%= render "comments/show", comment: @comment %></p>
+          </div>
+        </p>
+      </div>
     </div>
   </div >
 </div>
