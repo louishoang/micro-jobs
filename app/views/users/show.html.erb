@@ -42,8 +42,12 @@
       <div class="content" id="panel4">
         <p>
           <div class="row job_page" style="margin-top: 1%">
+            <p>
+              <%= render :template => "comments/new", comment: @comment %>
+            </p>
+            <div id="comments">
+            </div>
             <p><%= render "comments/show", comment: @comment %></p>
-            <p><%= render :template => "comments/new", comment: @comment %></p>
           </div>
         </p>
       </div>

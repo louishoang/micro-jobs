@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
   end
 
   def new
-
     @comment = Comment.new
   end
 
@@ -17,15 +16,17 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @user = current_user
+    @user = User.find(params[:user_id])
     @comment = Comment.new(comment_params)
     @comment.user_id = params[:user_id]
     if @comment.save
-      redirect_to user_path(@user)
-      flash[:notice] = "Your record has been created successfully!"
-    else
-      flash[:notice] = "Your record could not be completed"
-      render "new"
+      respond_to do |format|
+        format.html do
+          flash[:success] = "Your comment has been created successfully!"
+          redirect_to user_path(@user)
+        end
+      format.js
+      end
     end
   end
 
@@ -35,6 +36,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:user_id, :author, :text)
+      params.require(:comment).permit(:author, :text)
     end
 end

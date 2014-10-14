@@ -1,7 +1,12 @@
-<% @comments.each do |comment| %>
-  <p>Author:<%= comment.author %></p>
-  <p>Text:<%= comment.text %></p>
-<% end %>
-
+<div class="large-12 columns">
+  <% @comments.each do |comment| %>
+    <div class="large-12 columns panel reputation">
+      <span style="font-weight: bold">
+        <%= markdown "On " + comment.created_at.to_s + ", "+  comment.author + " " + "said: " %>
+      </span>
+      <%= markdown comment.text %>
+    </div>
+  <% end %>
+</div>
 
 

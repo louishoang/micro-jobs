@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     @first_name = @user.first_name
     @last_name = @user.last_name
     @address = @user.address
-    @comments = @user.comments
+    @comments = @user.comments.order(created_at: :desc)
     @comment = Comment.new
   end
 

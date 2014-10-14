@@ -1,0 +1,6 @@
+<div class="large-12 columns panel reputation">
+  <span style="font-weight: bold">
+    <%= markdown "On " + comment.created_at.to_s + ", "+ comment.author + " " + "said: " %>
+  </span>
+  <%= markdown comment.text %>
+</div>
