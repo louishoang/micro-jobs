@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :jobs, foreign_key: 'employer_id', dependent: :destroy
   has_many :user_skill_associations
   has_many :skills, through: :user_skill_associations
+  has_many :comments
 
   validates :user_name, presence: true
   validates :first_name, presence: true
@@ -13,7 +14,7 @@ class User < ActiveRecord::Base
 
   include PgSearch
 
-   pg_search_scope :combined_search,
+  pg_search_scope :combined_search,
                   :against => [:first_name, :last_name, :user_name],
                   :associated_against => { :skills => :name },
                   :using => { :trigram => { :threshold => 0.1 },

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root :to => "welcome#index"
 
   resources :jobs
-  resources :users
+  resources :users do
+    resources :comments
+  end
   resources :skills
   resource :session, only: [:new, :create, :destroy]
 

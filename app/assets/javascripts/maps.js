@@ -42,8 +42,8 @@ MapSearch.prototype.addMarkers = function(data) {
 }
 
 MapSearch.prototype.updatePopups = function(data) {
-  if(data){
-   var role = data[0].properties.role;
+  if(data.length > 0){
+    var role = data[0].properties.role;
   }
   // Iterate over each marker on the map
   this.map.markerLayer.eachLayer(function(marker) {
@@ -68,7 +68,7 @@ function ResultPanel(el){
 }
 
 ResultPanel.prototype.updateUsers = function(users) {
-  if(users){
+  if(users.length > 0){
     var firstuserlat = users[0].geometry.coordinates[1]
     var firstuserlng = users[0].geometry.coordinates[0]
     map.setView([firstuserlat, firstuserlng], 13);

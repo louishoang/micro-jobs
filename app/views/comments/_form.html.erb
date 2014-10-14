@@ -1,0 +1,10 @@
+<%= simple_form_for [@user, @comment], remote: true do |f| %>
+  <%= f.error_notification %>
+  <% if current_user %>
+    <%= f.input :author, :input_html => { :value => current_user.first_name + ' ' + current_user.last_name }, required: true %>
+  <% else %>
+    <%= f.input :author, required: true %>
+  <% end %>
+  <%= f.input :text, input_html:{rows: 5, cols: 50} %>
+  <%= f.button :submit, class: "button tiny round" %>
+<% end %>
