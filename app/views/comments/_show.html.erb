@@ -1,4 +1,7 @@
-
+<% @comments.each do |comment| %>
+  <p>Author:<%= comment.author %></p>
+  <p>Text:<%= comment.text %></p>
+<% end %>
 
 
 
