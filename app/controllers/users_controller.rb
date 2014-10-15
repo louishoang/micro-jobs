@@ -51,6 +51,7 @@ class UsersController < ApplicationController
     @address = @user.address
     @comments = @user.comments.order(created_at: :desc)
     @comment = Comment.new
+    @text_message = TextMessage.new(@user.phone_number, "There is a new update on your account!")
   end
 
   def edit
@@ -81,7 +82,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :address, :skills_ids => [] )
+    params.require(:user).permit(:first_name, :last_name, :address, :phone_number, :skills_ids => [] )
   end
 
   def set_user

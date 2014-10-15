@@ -1,0 +1,6 @@
+<%= simple_form_for @text_message do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :user_name, required: true %>
+  <%= f.input :description, as: :text, input_html:{rows: 5, cols: 50}, required: true %>
+  <%= f.button :submit %>
+<% end %>

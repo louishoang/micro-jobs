@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
   root :to => "welcome#index"
-  get "twilio/sms" => "twilio#index"
-  post 'twilio/send_text_message' => 'twilio#send_text_message'
-
-  resources :text_messages, only: [:new, :create]
 
   resources :jobs
   resources :users do
     resources :comments
+    resources :text_messages, only: [:new, :create]
   end
   resources :skills
   resource :session, only: [:new, :create, :destroy]
