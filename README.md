@@ -1,6 +1,6 @@
-== Breakable Toy At Launch Academy
+<h2>Breakable Toy At Launch Academy</h2>
 
-<h2>Micro Jobs</h2> is a job hunt portal but with a difference.
+Micro-Jobs is a job hunt portal but with a difference.
 My purpose of creating the website is to cater to the “small job” demands
 that often crop up in the day to day routine. It may so happen that you being the owner
 of a small restaurant suddenly find yourself short of workers for a shift,
