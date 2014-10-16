@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   def show
     @jobs = @user.jobs.order(sort_column + " " + sort_direction)
     @avatar = @user.avatar_url
+    @phone_number = @user.phone_number
     @user_name = @user.user_name
     @first_name = @user.first_name
     @last_name = @user.last_name

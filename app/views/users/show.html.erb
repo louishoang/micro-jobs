@@ -14,6 +14,7 @@
     </dl>
     <div class="tabs-content small-12 columns">
       <div class="content" id="panel5">
+        <p> * Please make sure the receiver has updated his/her phone number. You can do this by visiting primary tabs."
         <%= render "text_messages/form", sms: @sms %>
       </div>
       <div class="content active" id="panel1">
@@ -30,6 +31,15 @@
           <p>
             Address: <%= @address %>
           </p>
+          <% if @phone_number %>
+            <p>
+              Phone Number: <%= @phone_number %>
+            </p>
+          <% else %>
+            <p>
+              Phone Number: is not updated
+            </p>
+          <% end %>
         </div>
       </div>
 

@@ -9,9 +9,13 @@ class TextMessagesController < ApplicationController
     body = text_message_params[:text]
     body = body + "\n\nYou've been messsaged by #{sender.user_name}."
 
-    TextMessage.new(receiver.phone_number, body).send
-
-    redirect_to :back
+    if receiver.phone_number
+      TextMessage.new(receiver.phone_number, body).send
+      redirect_to :back
+    else
+      flash[:notice] = "Receiver doesn't have a phone number"
+      redirect_to :back
+    end
   end
 
   def text_message_params
