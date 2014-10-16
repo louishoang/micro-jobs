@@ -31,6 +31,9 @@
         <ul class="right" style="margin: 0px 15px">
           <% if signed_in? && current_user.is_admin? %>
             <li>
+              <a href="/admin/sidekiq"><i class="fa fa-slideshare"></i></a>
+            </li>
+            <li>
               <a href="/admin/users"><i class="fa fa-users"></i></a>
             </li>
             <li>

@@ -14,9 +14,6 @@ Rails.application.routes.draw do
     resources :users
     resources :jobs
     resources :skills
-  end
-
-  if Rails.env.development?
     mount Sidekiq::Web, at: '/sidekiq'
   end
 
