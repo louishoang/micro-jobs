@@ -1,6 +1,6 @@
-<%= simple_form_for @text_message do |f| %>
+<%= simple_form_for :text_message, url: user_text_messages_path(@user) do |f| %>
   <%= f.error_notification %>
-  <%= f.input :user_name, required: true %>
-  <%= f.input :description, as: :text, input_html:{rows: 5, cols: 50}, required: true %>
+  <%= f.input :text, required: true %>
   <%= f.button :submit %>
 <% end %>
+

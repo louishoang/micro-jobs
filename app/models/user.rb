@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :user_skill_associations
   has_many :skills, through: :user_skill_associations
   has_many :comments
+  has_many :sms_messages
 
   validates :user_name, presence: true
   validates :first_name, presence: true
@@ -15,7 +16,7 @@ class User < ActiveRecord::Base
   include PgSearch
 
   pg_search_scope :combined_search,
-                  :against => [:first_name, :last_name, :user_name],
+                  :against => [:first_name, :last_name, :user_name, :address],
                   :associated_against => { :skills => :name },
                   :using => { :trigram => { :threshold => 0.1 },
                     :tsearch  => { :dictionary => "english",

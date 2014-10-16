@@ -51,7 +51,6 @@ class UsersController < ApplicationController
     @address = @user.address
     @comments = @user.comments.order(created_at: :desc)
     @comment = Comment.new
-    @text_message = TextMessage.new(@user.phone_number, "There is a new update on your account!")
   end
 
   def edit
