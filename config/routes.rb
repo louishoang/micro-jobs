@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   root :to => "welcome#index"
 
@@ -15,9 +16,14 @@ Rails.application.routes.draw do
     resources :skills
   end
 
+  if Rails.env.development?
+    mount Sidekiq::Web, at: '/sidekiq'
+  end
+
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: "sessions#failure"
   get "/sign_out", to: "sessions#destroy"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
