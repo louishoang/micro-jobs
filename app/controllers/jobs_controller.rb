@@ -68,6 +68,8 @@ class JobsController < ApplicationController
     @skills_list = params[:job][:skill_ids]
 
     if @job.save
+      BatchNewJobWorker.perform_async(@job.id)
+
       @skills_list.each do |skill_id|
         JobSkillAssociation.create(job_id: @job.id, skill_id: skill_id )
       end
@@ -100,5 +102,9 @@ class JobsController < ApplicationController
       redirect_to root_url,
         notice: "Sorry, you are not authorized to perform this action!"
     end
+  end
+
+  def find_user(employer)
+    @users = User.near(employer.address, 5)
   end
 end

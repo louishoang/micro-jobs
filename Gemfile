@@ -36,6 +36,9 @@ gem 'rails_12factor', group: :production
 gem 'will_paginate'
 gem 'redcarpet'
 gem 'twilio-ruby'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 group :development, :test do
   gem 'pry-rails'
