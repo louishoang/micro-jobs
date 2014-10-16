@@ -35,6 +35,7 @@ gem 'font-awesome-rails'
 gem 'rails_12factor', group: :production
 gem 'will_paginate'
 gem 'redcarpet'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'pry-rails'

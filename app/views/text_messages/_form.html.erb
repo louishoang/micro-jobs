@@ -1,0 +1,6 @@
+<%= simple_form_for :text_message, url: user_text_messages_path(@user) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :text, required: true %>
+  <%= f.button :submit %>
+<% end %>
+

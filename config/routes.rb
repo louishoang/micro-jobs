@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :jobs
   resources :users do
     resources :comments
+    resources :text_messages, only: [:new, :create]
   end
   resources :skills
   resource :session, only: [:new, :create, :destroy]
