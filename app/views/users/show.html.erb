@@ -8,7 +8,9 @@
         <dd><a href="#panel3"><i class="fa fa-user"></i> My Profile</a></dd>
       <% end %>
       <dd><a href="#panel4"><i class="fa fa-bullhorn"></i> My Comments</a></dd>
-      <dd><a href="#panel5"><i class="fa fa-comments-o"></i>SMS</a></dd>
+      <% if current_user %>
+        <dd><a href="#panel5"><i class="fa fa-comments-o"></i>SMS</a></dd>
+      <% end %>
     </dl>
     <div class="tabs-content small-12 columns">
       <div class="content" id="panel5">
