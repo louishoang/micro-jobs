@@ -39,6 +39,7 @@ gem 'twilio-ruby'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+gem 'unicorn'
 
 group :development, :test do
   gem 'pry-rails'
