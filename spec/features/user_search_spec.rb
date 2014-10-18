@@ -10,7 +10,6 @@ feature 'users search for freelancer and job' do
     click_on "Sign in"
 
     visit users_path
-    save_and_open_page
     expect(page).to have_content(user_2.first_name)
     expect(page).to have_content(user_2.address)
   end

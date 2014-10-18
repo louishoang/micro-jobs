@@ -1,13 +1,45 @@
+// alert
+// ========
+
+.small-screen-alert{
+  @media #{$small-only} {
+    display: none;
+  }
+}
+
+.small-screen-alert{
+  @media #{$medium-only} {
+    margin-left: -30%;
+    position: absolute;
+  }
+}
+
+.alert_customized{
+  font-size: 0.8em;
+  color: white;
+  position: fixed;
+  margin-top: 1%;
+}
+
+.shift-right-cust{
+  @media #{$large-only} {
+    margin: 0px 15px;
+  }
+}
+// word break-all
+// ===============
+
 .reputation{
   word-break: break-all;
 }
 
+// welcome_page (cont)
+// ==============
+
 #welcome_text{
   font-size: 5vw;
   color: white;
-
-text-shadow: -1px -1px 0 hsl(80, 70%, 35%),
-
+  text-shadow: -1px -1px 0 hsl(80, 70%, 35%),
              -2px -2px 1px hsl(80, 70%, 35%);
 }
 
@@ -51,18 +83,14 @@ text-shadow: -1px -1px 0 hsl(80, 70%, 35%),
   text-align: center;
 }
 
-.alert_customized{
-  font-size: 0.8em;
-  color: white;
-  position: absolute;
-  margin-top: 1%;
-}
-
 .welcome{
   background-image: url("http://www.idesignresources.com/wp-content/uploads/2013/01/Freelance-Switch-Work-Time-Wallpaper-1920X1080.jpg");
 }
 
-/*job page*/
+// ==============
+// /*job page*/||
+// ==============
+
 .photos_on_job{
   display: block;
   width: 150px;
@@ -114,7 +142,10 @@ text-shadow: -1px -1px 0 hsl(80, 70%, 35%),
   text-align: center;
 }
 
-/*profile_page*/
+// ==================
+// /*profile_page*/||
+// ==================
+
 .profile_photo{
   width: 100%;
   height: 100%;
