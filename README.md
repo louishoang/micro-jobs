@@ -26,7 +26,7 @@ payment than professional help.
 - Eager loading.
 - Version control with Github and deploy app to Heroku.
 - Sending SMS using Twilio
-- Setup a worker to do asynchorous job(sending sms to all users who have the relevant skills with 5 miles of a job).
+- Setup a worker to do asynchorous job(sending sms to all users who have the relevant skills within 5 miles of a job).
 
 <h2>NOTE: I'm using trial twilio account, that's the reason you won't receive sms on your phone number.<br>
 It will send to me only if you post a job 5 miles radius away from 33 harrison ave, Boston, MA.</h2>
