@@ -54,6 +54,10 @@
   width: 60%;
   height: auto;
   margin: 2% 0% 0% 29%;
+  @media #{$xlarge-up} {
+    margin: 4% 0% 0% 10%;
+    width: 90%;
+  }
 }
 
 .welcome_bg{
@@ -72,6 +76,26 @@
     left: 0;
     width: 100%;
     height: 40%;
+    background-size: cover;
+    z-index: -99;
+  }
+
+  @media #{$large-only} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-size: cover;
+    z-index: -99;
+  }
+
+  @media #{$xlarge-up} {
+    position: fixed;
+    top: 25px;
+    left: 0;
+    width: 100%;
+    height: 96%;
     background-size: cover;
     z-index: -99;
   }
