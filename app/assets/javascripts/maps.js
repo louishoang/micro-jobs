@@ -136,7 +136,7 @@ $('.search_job').on('submit', function(event) {
   $(".results-list").html("<div>" + "</div>");
 });
 
-// var map = L.mapbox.map('map', 'louishoang.jn2haba8', { zoomControl: false } )
+// var map = L.mapbox.map('map', 'keyfrommapbox', { zoomControl: false } )
 //           .setView([42.366, -71.109], 13);
 // var mapSearch = new MapSearch(map);
 
